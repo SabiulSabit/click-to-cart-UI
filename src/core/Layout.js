@@ -4,7 +4,7 @@ import Menu from "./Menu";
 const Layout = ({
   title = "Title",
   description = "Description",
-  chilren,
+  children,
   className,
 }) => {
   return (
@@ -16,7 +16,7 @@ const Layout = ({
       </div>
 
       <div className={className}>
-            {chilren}
+            {children}
       </div>
     </div>
   );
