@@ -21,7 +21,7 @@ const Signup = () => {
   let onSubmit = (data) => {
     const { name, email, password } = data;
     signup({ name, email, password }).then((data) => {
-      console.log("asd", data);
+      console.log( data.error, data.err);
       if (data.error) {
         setError(data.error);
         setSuccess(0);
