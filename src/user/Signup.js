@@ -14,8 +14,27 @@ const Signup = () => {
       } = useForm();
     
 
+      const signup = (user) => {
+           // console.log(name, email, password)
+            fetch(`${API}/signup`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            }).then(res => {
+                return res.json();
+            }).catch(err => {
+                console.log(err);
+            })
+      }
+
      let onSubmit = (data) => {
-        console.log(data);
+
+         const {name, email, password} =  data;
+         signup( {name, email, password} );
+
       };
     
 
