@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import  {Link} from "react-router-dom"
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -8,7 +9,7 @@ import { API } from "../config";
 const Signup = () => {
   let [error, setError] = useState(0);
   let [success, setSuccess] = useState(0);
-  
+
   const {
     register,
     handleSubmit,
@@ -126,7 +127,7 @@ const Signup = () => {
         className="alert alert-info"
         style={{ display: success ? "" : "none" }}
       >
-        Account Create Successfully. Please Signin
+        Account Create Successfully. Please <Link to="/signin">Signin</Link> 
       </div>
     );
   };
