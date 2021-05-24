@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
@@ -6,37 +6,50 @@ import { Container, Row, Col } from "react-bootstrap";
 import { API } from "../config";
 
 const Signup = () => {
+  let [error, setError] = useState(0);
+  let [success, setSuccess] = useState(0);
   
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-    
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
-      const signup = (user) => {
-           // console.log(name, email, password)
-            fetch(`${API}/signup`, {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(user)
-            }).then(res => {
-                return res.json();
-            }).catch(err => {
-                console.log(err);
-            })
+  const signup = (user) => {
+    // console.log(name, email, password)
+    return fetch(`${API}/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+  let onSubmit = (data) => {
+    const { name, email, password } = data;
+    signup({ name, email, password }).then((data) => {
+      console.log("asd", data);
+      if (data.error) {
+        setError(data.error);
+        setSuccess(0);
+      } else {
+        setSuccess(1);
+        setError(0);
+        setValue("name", "", { shouldValidate: false });
+        setValue("email", "", { shouldValidate: false });
+        setValue("password", "", { shouldValidate: false });
       }
-
-     let onSubmit = (data) => {
-
-         const {name, email, password} =  data;
-         signup( {name, email, password} );
-
-      };
-    
+    });
+  };
 
   const singUPForm = () => (
     <Container className="center">
@@ -45,31 +58,83 @@ const Signup = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <label htmlFor="name" className="text-muted">
-                Name <span className="err">{errors.name && "This Fields is Required"}</span> 
+                Name{" "}
+                <span className="err">
+                  {errors.name && "This Fields is Required"}
+                </span>
               </label>
-              <input type="text" id="name" placeholder="Your Name" className="form-control" {...register("name", { required: true, maxLength: 32 })} />
+              <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                className="form-control"
+                {...register("name", { required: true, maxLength: 32 })}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email" className="text-muted">
-                Email <span className="err">{errors.email && "This Fields is Required"}</span> 
+                Email{" "}
+                <span className="err">
+                  {errors.email && "This Fields is Required"}
+                </span>
               </label>
-              <input type="email" id="email" className="form-control" {...register("email", { required: true })} />
+              <input
+                type="email"
+                id="email"
+                className="form-control"
+                {...register("email", { required: true })}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password" className="text-muted">
-                Password <span className="err">{errors.password && "This Fields is Required"}</span> 
+                Password{" "}
+                <span className="err">
+                  {errors.password && "This Fields is Required"}
+                </span>
               </label>
-              <input type="password" id="password" className="form-control" {...register("password", { required: true })} />
+              <input
+                type="password"
+                id="password"
+                className="form-control"
+                {...register("password", { required: true })}
+              />
             </div>
-            <button className="btn btn-primary" type="submit">Submit</button>
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
           </form>
         </Col>
       </Row>
     </Container>
   );
 
+  const showError = () => {
+    console.log(error);
+    return (
+      <div
+        className="alert alert-danger"
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    );
+  };
+
+  const showSuccess = () => {
+    return (
+      <div
+        className="alert alert-info"
+        style={{ display: success ? "" : "none" }}
+      >
+        Account Create Successfully. Please Signin
+      </div>
+    );
+  };
+
   return (
     <Layout title="Signup" description="E-Commerce Website">
+      {showSuccess()}
+      {showError()}
       {singUPForm()}
     </Layout>
   );
