@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = ({
   title = "Title",
