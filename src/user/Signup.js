@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import  {Link} from "react-router-dom"
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
+import  {signup} from '../auth/index'
 
-import { API } from "../config";
 
 const Signup = () => {
   let [error, setError] = useState(0);
@@ -17,23 +17,6 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const signup = (user) => {
-    // console.log(name, email, password)
-    return fetch(`${API}/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .catch((err) => {
-        return err;
-      });
-  };
 
   let onSubmit = (data) => {
     const { name, email, password } = data;
