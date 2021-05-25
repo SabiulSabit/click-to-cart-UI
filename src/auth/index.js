@@ -1,6 +1,7 @@
 import { API } from "../config";
 
 
+//user signup
   export const signup = (user) => {
     // console.log(name, email, password)
     return fetch(`${API}/signup`, {
@@ -21,7 +22,7 @@ import { API } from "../config";
 
 
 
-
+//user signin
   export const signin = (user) => {
     // console.log(name, email, password)
     return fetch(`${API}/signin`, {
@@ -39,3 +40,12 @@ import { API } from "../config";
         return err;
       });
   };
+
+
+export const authenticate =  (data, next) =>{
+       
+  if(typeof window !== undefined){
+    localStorage.setItem('jwt', JSON.stringify(data));
+    next();
+  }
+}

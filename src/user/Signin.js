@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import  {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import  {signin} from '../auth/index'
-
+import { signin, authenticate } from "../auth/index";
 
 const Signin = () => {
   let [error, setError] = useState(0);
   let [loading, setLoading] = useState(false);
   let [redirect, setRedirect] = useState(false);
-
 
   const {
     register,
@@ -19,22 +17,22 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
 
-
   let onSubmit = (data) => {
     const { email, password } = data;
     setLoading(true);
-    signin({email, password }).then((data) => {
-    
+    signin({ email, password }).then((data) => {
       if (data.error) {
         setError(data.error);
         setRedirect(false);
         setLoading(false);
       } else {
-        setError(0);
-        setValue("email", "", { shouldValidate: false });
-        setValue("password", "", { shouldValidate: false });
-        setLoading(false);
-        setRedirect(true);
+        authenticate(data, () => {
+          setError(0);
+          setValue("email", "", { shouldValidate: false });
+          setValue("password", "", { shouldValidate: false });
+          setLoading(false);
+          setRedirect(true);
+        });
       }
     });
   };
@@ -44,7 +42,6 @@ const Signin = () => {
       <Row>
         <Col md={8} className="offset-md-2">
           <form onSubmit={handleSubmit(onSubmit)}>
-
             <div className="form-group">
               <label htmlFor="email" className="text-muted">
                 Email{" "}
@@ -95,14 +92,20 @@ const Signin = () => {
   };
 
   const showLoading = () => {
-      return loading && <div className="alert alert-info"><h2>Loading...</h2></div>
+    return (
+      loading && (
+        <div className="alert alert-info">
+          <h2>Loading...</h2>
+        </div>
+      )
+    );
   };
 
   const redirectUser = () => {
-    if(redirect){
-        return <Redirect to="/" />
+    if (redirect) {
+      return <Redirect to="/" />;
     }
-};
+  };
 
   return (
     <Layout title="Signin" description="E-Commerce Website">
