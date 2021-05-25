@@ -105,7 +105,7 @@ const Signin = () => {
 };
 
   return (
-    <Layout title="Signup" description="E-Commerce Website">
+    <Layout title="Signin" description="E-Commerce Website">
       {showLoading()}
       {redirectUser()}
       {showError()}
