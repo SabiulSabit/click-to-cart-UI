@@ -42,10 +42,29 @@ import { API } from "../config";
   };
 
 
+  //save jwt to local storage
 export const authenticate =  (data, next) =>{
        
   if(typeof window !== undefined){
     localStorage.setItem('jwt', JSON.stringify(data));
     next();
+  }
+}
+
+
+//signout
+export const signout = (next) =>{
+  if(typeof window !== undefined){
+    localStorage.removeItem('jwt');
+    next();
+    return fetch( `${API}/signout`, {
+      method: "GET"
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 }
