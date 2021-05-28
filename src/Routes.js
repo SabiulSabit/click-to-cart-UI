@@ -8,7 +8,7 @@ import Home from "./core/Home";
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Switch>
+      <Switch> dashboard
         <Route path="/" exact component={Home} />
         <Route path="/signin" exact component={Signin} />
         <Route path="/signup" exact component={Signup} />
