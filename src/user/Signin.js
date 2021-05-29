@@ -113,6 +113,10 @@ const Signin = () => {
        }
      
     }
+
+    if(isAuthenticate()){
+      return <Redirect to="/" />;
+    }
   };
 
   return (
