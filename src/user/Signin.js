@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { signin, authenticate } from "../auth/index";
+import { signin, authenticate, isAuthenticate } from "../auth/index";
 
 const Signin = () => {
   let [error, setError] = useState(0);
   let [loading, setLoading] = useState(false);
   let [redirect, setRedirect] = useState(false);
+
+  const {user} = isAuthenticate();
 
   const {
     register,
@@ -103,7 +105,13 @@ const Signin = () => {
 
   const redirectUser = () => {
     if (redirect) {
-      return <Redirect to="/" />;
+       if(user && user.role === 1){
+           return <Redirect to="/admin/dashboard" />;
+       }
+       else{
+          return <Redirect to="/user/dashboard" />;
+       }
+     
     }
   };
 

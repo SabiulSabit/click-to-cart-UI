@@ -5,7 +5,7 @@ import UserDashboard from "../user/UserDashboard";
 
 function PrivateRoute({ children, ...rest }) {
   if (isAuthenticate()) {
-    return <Route path="/dashboard" exact component={UserDashboard} />;
+    return <Route path="/user/dashboard" exact component={UserDashboard} />;
   } else {
     return (
       <Redirect
