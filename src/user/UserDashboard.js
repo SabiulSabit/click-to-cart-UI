@@ -8,7 +8,7 @@ const Dashboard = () => {
   const {
     user: { _id, name, email, role },
   } = isAuthenticate();
-  
+
   const userLinks = () => {
     return (
       <div className="card">
@@ -20,8 +20,36 @@ const Dashboard = () => {
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to="/profile/update">Update Profile</Link>
+            <Link className="nav-link" to="/profile/update">
+              Update Profile
+            </Link>
           </li>
+        </ul>
+      </div>
+    );
+  };
+
+  const userInfo = () => {
+    return (
+      <div className="card mb-5">
+        <h3 className="card-header">User Information</h3>
+        <ul className="list-group">
+          <li className="list-group-item">{name}</li>
+          <li className="list-group-item">{email}</li>
+          <li className="list-group-item">
+            {role === 1 ? "Admin" : "Registred User"}
+          </li>
+        </ul>
+      </div>
+    );
+  };
+
+  const purchaseHistory = () => {
+    return (
+      <div className="card mb-5">
+        <h3 className="card-header">Purchase History</h3>
+        <ul className="list-group">
+          <li className="list-group-item">History</li>
         </ul>
       </div>
     );
@@ -29,24 +57,7 @@ const Dashboard = () => {
 
   return (
     <Layout title="User Dashboard" description="User Dashboard">
-      <Container>
-        <div className="card mb-5">
-          <h3 className="card-header">User Information</h3>
-          <ul className="list-group">
-            <li className="list-group-item">{name}</li>
-            <li className="list-group-item">{email}</li>
-            <li className="list-group-item">
-              {role === 1 ? "Admin" : "Registred User"}
-            </li>
-          </ul>
-        </div>
-        <div className="card mb-5">
-          <h3 className="card-header">Purchase History</h3>
-          <ul className="list-group">
-            <li className="list-group-item">History</li>
-          </ul>
-        </div>
-      </Container>
+      <Container></Container>
     </Layout>
   );
 };
