@@ -5,6 +5,7 @@ import {isAuthenticate} from '../auth/index'
 
 
 const Dashboard = () => {
+    const {user: {_id, name, email, role}} = isAuthenticate();
     return (
         <Layout title="User Dashboard" description="User Dashboard">
             <Container>
@@ -12,17 +13,17 @@ const Dashboard = () => {
                 <h3 className="card-header">User Information</h3>
                 <ul className="list-group">
                     <li className="list-group-item">
-                            Name
+                            {name}
                     </li>
                     <li className="list-group-item">
-                            Email
+                            {email}
                     </li>
                     <li className="list-group-item">
-                            Role
+                            {role  === 1 ? "Admin": "Registred User"}
                     </li>
                 </ul>
             </div>
-            <div className="card">
+            <div className="card mb-5">
                  <h3 className="card-header">Purchase History</h3>
                  <ul className="list-group">
                     <li className="list-group-item">
