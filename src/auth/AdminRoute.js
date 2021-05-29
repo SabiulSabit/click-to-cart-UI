@@ -3,8 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 import { isAuthenticate } from "./index";
 import AdminDashboard from "../user/AdminDashboard";
 
-function PrivateRoute({ children, ...rest }) {
-  if (isAuthenticate()) {
+function AdminRoute({ children, ...rest }) {
+  if (isAuthenticate() && isAuthenticate().user.role === 1) {
     return <Route path="/admin/dashboard" exact component={AdminDashboard} />;
   } else {
     return (
@@ -17,4 +17,4 @@ function PrivateRoute({ children, ...rest }) {
   }
 }
 
-export default PrivateRoute;
+export default AdminRoute;

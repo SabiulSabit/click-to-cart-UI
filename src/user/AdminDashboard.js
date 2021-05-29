@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const {
-    user: { _id, name, email, role },
+    user: { name, email, role },
   } = isAuthenticate();
 
   const adminLinks = () => {
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Layout title="User Dashboard" description="User Dashboard">
+    <Layout title="Admin Dashboard" description="Admin Dashboard">
       <Container>
             <Row>
                 <Col md={3}>
