@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../core/Layout";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { Link } from "react-router-dom";
 
@@ -57,7 +57,17 @@ const Dashboard = () => {
 
   return (
     <Layout title="User Dashboard" description="User Dashboard">
-      <Container></Container>
+      <Container>
+            <Row>
+                <Col md={3}>
+                    {userLinks()}
+                </Col>
+                <Col md={9}>
+                    {userInfo()}
+                    {purchaseHistory()}
+                </Col>
+            </Row>
+      </Container>
     </Layout>
   );
 };
