@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { isAuthenticate } from "./index";
-import AdminDashboard from "../user/AdminDashboard";
+
 
 function AdminRoute({ component ,path, children, ...rest }) {
   if (isAuthenticate() && isAuthenticate().user.role === 1) {
