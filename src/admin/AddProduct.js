@@ -7,6 +7,9 @@ import { isAuthenticate } from "../auth/index";
 import { createProduct } from "./apiAdmin";
 
 const AddProdcut = () => {
+
+  const  { user, token }= isAuthenticate();
+  
   return (
     <Layout title="Add New Product" description="E-Commerce Website">
      .... 
