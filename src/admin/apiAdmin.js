@@ -20,4 +20,27 @@ export const createCategory = (userId, token, category) => {
         return err;
       });
   };
+
+
+
+  
+//create product
+export const createProduct = (userId, token, product) => {
+      
+  return fetch(`${API}/product/create/${userId}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: product,
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
   
