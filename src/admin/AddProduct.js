@@ -33,9 +33,15 @@ const AddProdcut = () => {
     category,
   } = values;
 
+  useEffect( () => {
+        setValues({...values, formData: new FormData()})
+  }, [])
+
   const onSubmit = (data) => {
     console.log(data);
+    formData.set(data);
   };
+
 
   const newPostForm = () => {
     return (
