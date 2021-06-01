@@ -43,7 +43,7 @@ const form = useRef(null)
     //formData.set(data);
 
     setValues({ ...values, error: "", loading: true });
-    console.log(";ad");
+    
     createProduct(user._id, token, data1)
       .then((data) => {
 
