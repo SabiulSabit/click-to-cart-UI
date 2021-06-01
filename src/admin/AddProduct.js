@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef  } from "react";
+import React, { useState, useRef  } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
@@ -15,7 +15,6 @@ const form = useRef(null)
     error: "",
     createProductName: "",
     redirectToProfile: false,
-    formData: "",
     category: [],
   });
 
@@ -36,12 +35,10 @@ const form = useRef(null)
     category,
   } = values;
 
-  useEffect(() => {
-    setValues({ ...values, formData: new FormData() });
-  }, []);
+
 
   const onSubmit = (data) => {
-    //console.log(data);
+    //console.log(data); 
     const data1 = new FormData(form.current)
     //formData.set(data);
 
