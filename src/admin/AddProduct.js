@@ -37,7 +37,7 @@ const AddProdcut = () => {
     });
   }, []);
 
-  //console.log(category);
+ // console.log(createProductName);
   const onSubmit = (data) => {
     //console.log(data);
     const data1 = new FormData(form.current);
@@ -50,6 +50,7 @@ const AddProdcut = () => {
         if (data.error) {
           setValues({ ...values, error: data.error });
         } else {
+        //  console.log(data.result.name)
           setValue("photo", "", { shouldValidate: false });
           setValue("name", "", { shouldValidate: false });
           setValue("description", "", { shouldValidate: false });
@@ -60,7 +61,7 @@ const AddProdcut = () => {
             ...values,
             error: "",
             loading: false,
-            createProductName: data.name,
+            createProductName: data.result.name,
           });
         }
       })
@@ -202,8 +203,8 @@ const AddProdcut = () => {
   );
 
   const showSuccess = () => (
-    <div className="alert alert-info" style={{ display: createProduct ? "" : "none" }}>
-       <h3> {`${createProduct} is Created !`} </h3>
+    <div className="alert alert-info" style={{ display: createProductName ? "" : "none" }}>
+       <h3> {`${createProductName} is Created !`} </h3>
     </div>
   );
 
@@ -217,6 +218,9 @@ const AddProdcut = () => {
       <Container>
         <Row>
           <Col md={8} className="offset-2">
+            {showLoading()}
+            {showSuccess()}
+            {showError()}
             {newPostForm()}
           </Col>
         </Row>
