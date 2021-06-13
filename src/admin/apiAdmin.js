@@ -43,4 +43,7 @@ export const createProduct = (userId, token, product) => {
     });
 };
 
+//get all category
+export const getCategorys = () => {
   
+}  
