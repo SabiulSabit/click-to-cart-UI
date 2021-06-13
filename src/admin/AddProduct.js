@@ -192,9 +192,20 @@ const AddProdcut = () => {
     );
   };
 
-  const showError = () => <div className="alert-danger" style={{display: error ? '' : "none" }}>
-        {error}
-  </div>;
+  const showError = () => (
+    <div
+      className="alert alert-danger"
+      style={{ display: error ? "" : "none" }}
+    >
+      {error}
+    </div>
+  );
+
+  const showSuccess = () => (
+    <div className="alert alert-info" style={{ display: createProduct ? "" : "none" }}>
+       <h3> {`${createProduct} is Created !`} </h3>
+    </div>
+  );
 
   return (
     <Layout title="Add New Product" description="E-Commerce Website">
