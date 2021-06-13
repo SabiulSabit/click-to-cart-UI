@@ -7,9 +7,7 @@ import { createProduct, getCategorys } from "./apiAdmin";
 
 const AddProdcut = () => {
   const form = useRef(null);
-
   let [category, setCategory] = useState([]);
-
   let [values, setValues] = useState({
     loading: false,
     error: "",
@@ -39,7 +37,7 @@ const AddProdcut = () => {
     });
   }, []);
 
-  console.log(category);
+  //console.log(category);
   const onSubmit = (data) => {
     //console.log(data);
     const data1 = new FormData(form.current);
@@ -50,7 +48,7 @@ const AddProdcut = () => {
     createProduct(user._id, token, data1)
       .then((data) => {
         if (data.error) {
-           setValues({ ...values, error: data.error });
+          setValues({ ...values, error: data.error });
         } else {
           setValue("photo", "", { shouldValidate: false });
           setValue("name", "", { shouldValidate: false });
@@ -145,7 +143,7 @@ const AddProdcut = () => {
             {...register("category", { required: true })}
           >
             <option>Pleaes Select One</option>
-            {/* <option value="60a4c93a892e99236485f888">Node</option> */}
+
             {category.map((c, i) => (
               <option key={i} value={c._id}>
                 {c.name}
@@ -167,6 +165,7 @@ const AddProdcut = () => {
             className="form-control"
             {...register("shipping", { required: true })}
           >
+            <option>Pleaes Select One</option>
             <option value="0">No</option>
             <option value="1">Yes</option>
           </select>
