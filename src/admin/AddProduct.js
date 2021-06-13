@@ -207,6 +207,11 @@ const AddProdcut = () => {
     </div>
   );
 
+  const showLoading = () => (
+     loading &&  ( <div className="alert alert-sucess"><h2>Loading</h2></div> )
+  );
+
+
   return (
     <Layout title="Add New Product" description="E-Commerce Website">
       <Container>
