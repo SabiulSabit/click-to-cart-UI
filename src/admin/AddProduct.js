@@ -192,6 +192,10 @@ const AddProdcut = () => {
     );
   };
 
+  const showError = () => <div className="alert-danger" style={{display: error ? '' : "none" }}>
+        {error}
+  </div>;
+
   return (
     <Layout title="Add New Product" description="E-Commerce Website">
       <Container>
