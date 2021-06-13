@@ -1,21 +1,21 @@
-import React, { useState, useRef  } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
-import { createProduct } from "./apiAdmin";
+import { createProduct, getCategorys } from "./apiAdmin";
 
 const AddProdcut = () => {
+  const form = useRef(null);
 
-const form = useRef(null)
+  let [category, setCategory] = useState([]);
 
   let [values, setValues] = useState({
     loading: false,
     error: "",
     createProductName: "",
     redirectToProfile: false,
-    category: [],
+    categorys: [],
   });
 
   const {
@@ -26,29 +26,31 @@ const form = useRef(null)
   } = useForm();
 
   const { user, token } = isAuthenticate();
-  const {
-    loading,
-    error,
-    createProductName,
-    redirectToProfile,
-    formData,
-    category,
-  } = values;
+  const { loading, error, createProductName, redirectToProfile } = values;
 
+  //load categories and use it
+  useEffect(() => {
+    getCategorys().then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setCategory((category) => data);
+      }
+    });
+  }, []);
 
-
+  console.log(category);
   const onSubmit = (data) => {
-    //console.log(data); 
-    const data1 = new FormData(form.current)
+    //console.log(data);
+    const data1 = new FormData(form.current);
     //formData.set(data);
 
     setValues({ ...values, error: "", loading: true });
-    
+
     createProduct(user._id, token, data1)
       .then((data) => {
-
         if (data.error) {
-          setValues({ ...values, error: data.error });
+           setValues({ ...values, error: data.error });
         } else {
           setValue("photo", "", { shouldValidate: false });
           setValue("name", "", { shouldValidate: false });
@@ -142,7 +144,13 @@ const form = useRef(null)
             className="form-control"
             {...register("category", { required: true })}
           >
-            <option value="60a4c93a892e99236485f888">Node</option>
+            <option>Pleaes Select One</option>
+            {/* <option value="60a4c93a892e99236485f888">Node</option> */}
+            {category.map((c, i) => (
+              <option key={i} value={c._id}>
+                {c.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="form-group">
