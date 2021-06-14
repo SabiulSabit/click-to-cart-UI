@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import {getCategorys} from './apiCore'
+import Checkbox from "./Checkbox";
 
 const Shop = () => {
    
@@ -28,7 +29,12 @@ const Shop = () => {
     >
        <Container>
             <Row>
-                <Col md={4}>{JSON.stringify(categories)}</Col>
+                <Col md={4}>
+                  <h4>Filter by Categories</h4>
+                  <ul>
+                     <Checkbox categories={categories} />
+                  </ul>
+                </Col>
                 <Col md={8}>Right</Col>
             </Row>
        </Container>
