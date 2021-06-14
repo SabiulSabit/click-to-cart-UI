@@ -4,8 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Card = ({product}) => {
     return (
-         <Container>
-             <Row>
+        
                  <Col md={4} className="mb-3">
                      <div className="card">
                          <div className="card-header">
@@ -21,8 +20,7 @@ const Card = ({product}) => {
                          </div>
                      </div>
                  </Col>
-             </Row>
-         </Container>
+
     )
 }
 

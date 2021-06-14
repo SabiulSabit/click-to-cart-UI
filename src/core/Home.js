@@ -37,11 +37,15 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout title="Home" description="E-Commerce Website" className="container-fluid">
+    <Layout
+      title="Home"
+      description="E-Commerce Website"
+      className="container-fluid"
+    >
+      
       <Container>
-      <h2 className="mb-4">Best Sellers</h2>
+        <h2 className="mb-4">Best Sellers</h2>
         <Row>
-        
           {productsBySell.map((product, i) => (
             <Card key={i} product={product} />
           ))}
@@ -49,11 +53,14 @@ const Home = () => {
       </Container>
 
       <hr />
-
+      <Container>
       <h2 className="mb-4">New Arrivals</h2>
-      {productsByArrival.map((product, i) => (
-        <Card key={i} product={product} />
-      ))}
+        <Row>
+          {productsByArrival.map((product, i) => (
+            <Card key={i} product={product} />
+          ))}
+        </Row>
+      </Container>
     </Layout>
   );
 };
