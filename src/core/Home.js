@@ -5,7 +5,7 @@ import {getProducts} from './apiCore'
 const Home = () => {
     
     const [productsBySell, setProductsBySell] = useState([]);
-    const [productsByArival, setProductsByArival] = useState([]);
+    const [productsByArrival, setProductsByArrival] = useState([]);
     const [error, setError] = useState(false);
    
     //get the products by sell
@@ -20,6 +20,19 @@ const Home = () => {
             }
         })
     }
+
+        //get the products by arrival
+        const loadProductsByArrival = ( ) => {
+            
+            getProducts("createdAt").then(data => {
+                if(data.error){
+                    setError(data.error);
+                }
+                else{
+                    setProductsBySell(data);
+                }
+            })
+        }
 
     return (
         <Layout title="Home" description="E-Commerce Website">
