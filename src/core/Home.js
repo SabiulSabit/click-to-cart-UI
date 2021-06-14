@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { getProducts } from "./apiCore";
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "./Card";
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([]);
@@ -29,17 +31,29 @@ const Home = () => {
     });
   };
 
-
-  useEffect( () => {
-        loadProductsByArrival();
-        loadProductsBySell();
-  }, [] )
+  useEffect(() => {
+    loadProductsByArrival();
+    loadProductsBySell();
+  }, []);
 
   return (
-    <Layout title="Home" description="E-Commerce Website">
-      {JSON.stringify(productsByArrival)}
+    <Layout title="Home" description="E-Commerce Website" className="container-fluid">
+      <Container>
+      <h2 className="mb-4">Best Sellers</h2>
+        <Row>
+        
+          {productsBySell.map((product, i) => (
+            <Card key={i} product={product} />
+          ))}
+        </Row>
+      </Container>
+
       <hr />
-      {JSON.stringify(productsBySell)}
+
+      <h2 className="mb-4">New Arrivals</h2>
+      {productsByArrival.map((product, i) => (
+        <Card key={i} product={product} />
+      ))}
     </Layout>
   );
 };
