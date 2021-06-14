@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Container, Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
+import ShowImage from './ShowImage'
 
 const Card = ({product}) => {
     return (
@@ -11,6 +12,7 @@ const Card = ({product}) => {
                             {product.name}
                          </div>
                          <div className="card-body">
+                             <ShowImage item={product} url="product" />
                             <p> {product.description} </p>
                             <p> $ {product.price} </p>
                             <Link to='/'>
