@@ -17,3 +17,18 @@ export const getProducts = (sortBy) => {
       });
   };
   
+
+
+//get all category
+export const getCategorys = () => {
+  return fetch(`${API}/categories`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
