@@ -31,8 +31,25 @@ const Shop = () => {
          // console.log('Shop' ,filters, filterBy)
           const newFilters =  {...myFilters};
           newFilters.filters[filterBy] = filters;
+          if(filterBy == 'price'){
+            let priceValue = handelPrice(filters);
+            newFilters.filters[filterBy] = priceValue;
+          }
           setMyFilters(newFilters)
     }
+
+    //get the selected price range
+    const handelPrice = (value) => {
+          const data = prices;
+          let arr = [];
+          for(let  key in data){
+            if(data[key]._id == parseInt(value) ){
+              arr = data[key].array;
+            }
+          }
+
+          return arr;
+    } 
 
   return (
     <Layout
