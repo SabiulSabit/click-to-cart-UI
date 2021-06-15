@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import {getCategorys} from './apiCore'
 import Checkbox from "./Checkbox";
+import {prices} from './fixedPrice';
 
 const Shop = () => {
    
