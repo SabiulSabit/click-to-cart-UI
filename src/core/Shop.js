@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import {getCategorys} from './apiCore'
 import Checkbox from "./Checkbox";
+import RadioBox from "./RadioBox";
 import {prices} from './fixedPrice';
 
 const Shop = () => {
@@ -46,6 +47,10 @@ const Shop = () => {
                   <ul>
                      <Checkbox categories={categories} handleFilters={filters => handleFilters(filters, 'category')} />
                   </ul>
+                  <h4>Filter by Price</h4>
+                  <div>
+                     <RadioBox prices={prices} handleFilters={filters => handleFilters(filters, 'price')} />
+                  </div>
                 </Col>
                 <Col md={8}>{JSON.stringify(myFilters)}</Col>
             </Row>
