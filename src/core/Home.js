@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { getProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
+import Search from "./Search";
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([]);
@@ -42,7 +43,14 @@ const Home = () => {
       description="E-Commerce Website"
       className="container-fluid"
     >
-      
+      <Container>
+        <Row>
+          <Col md={12}>
+          <Search />
+          </Col>
+        </Row>
+      </Container>
+   
       <Container>
         <h2 className="mb-4">Best Sellers</h2>
         <Row>
