@@ -58,7 +58,16 @@ const Shop = () => {
         }
       });
     };
-
+   
+    //laod more btn show
+    const loadMoreButton = () => {
+      console.log(size > 0 && size >= limit )
+       return (
+          size > 0 && size >= limit &&  ( 
+            <button onClick={loadMore} className="btn btn-warning mb-5 ">Lode More</button>
+          )
+       )
+    }
   
     
 
@@ -121,7 +130,8 @@ const Shop = () => {
                 ))}
               </Row>
             </Container>
-          
+            <hr />
+             {loadMoreButton()}
           </Col>
         </Row>
       </Container>
