@@ -34,7 +34,7 @@ const Product = (props) => {
      
      <Container>
          <Row>
-            { product && product.description && <Card product={product} viewProductButton={false} /> }
+            { product && product.description &&    <Col md={8} className="mb-3">  <Card product={product} viewProductButton={false} /> </Col> }
          </Row>
      </Container>
     </Layout>

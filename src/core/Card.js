@@ -6,7 +6,7 @@ import moment from "moment";
 
 const Card = ({ product, viewProductButton = true }) => {
   return (
-    <Col md={4} className="mb-3">
+  
       <div className="card">
         <div className="card-header name">{product.name}</div>
         <div className="card-body">
@@ -37,7 +37,7 @@ const Card = ({ product, viewProductButton = true }) => {
           </button>
         </div>
       </div>
-    </Col>
+    
   );
 };
 
