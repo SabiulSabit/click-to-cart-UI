@@ -73,3 +73,18 @@ export const getSearchedProducts = (params) => {
       console.log(err);
     });
 };
+
+
+// get Single Product 
+export const getSingleProdcut = (productId) =>{
+
+  return fetch(`${API}/product/${productId}`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
