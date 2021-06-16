@@ -44,13 +44,13 @@ const Home = () => {
       className="container-fluid"
     >
       <Container>
-        <Row>
-          <Col md={12}>
-          <Search />
+        <Row> 
+         <Col md={12}>
+            <Search />
           </Col>
         </Row>
       </Container>
-   
+
       <Container>
         <h2 className="mb-4">Best Sellers</h2>
         <Row>
@@ -62,7 +62,7 @@ const Home = () => {
 
       <hr />
       <Container>
-      <h2 className="mb-4">New Arrivals</h2>
+        <h2 className="mb-4">New Arrivals</h2>
         <Row>
           {productsByArrival.map((product, i) => (
             <Card key={i} product={product} />

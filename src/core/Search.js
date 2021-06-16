@@ -25,58 +25,72 @@ const Search = () => {
     });
   };
 
-  //get searchData 
+  //get searchData
   const searchData = () => {
-      if(search){
-        getSearchedProducts({search: search || undefined, category: category}).then(products => {
-            if(products.error){
-                console.log(products.error);
-            }else{
-                setData({...data, result: products, searched: true})
-            }
-        })
-      }
-  }
+    if (search) {
+      getSearchedProducts({
+        search: search || undefined,
+        category: category,
+      }).then((products) => {
+        if (products.error) {
+          console.log(products.error);
+        } else {
+          setData({ ...data, result: products, searched: true });
+        }
+      });
+    }
+  };
 
   //form submit
   const searchSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      searchData();
-        
+    searchData();
   };
 
   //input on chnage
-  const handelChnage = (name ) => event => {
-      setData({...data, [name]: event.target.value, searched: false})
+  const handelChnage = (name) => (event) => {
+    setData({ ...data, [name]: event.target.value, searched: false });
   };
+
+  // show the searched product
+  const showSearchedProduct = (productData = []) => {
+      return <div>
+            {productData.map((product, i)=>(<Card key={i} product={product} />))}
+        </div>
+  }
 
   //search bar
   const searchForm = () => {
-   return <form onSubmit={searchSubmit}>
-      <span className="input-group-text">
-        <div className="input-group input-group-lg">
-          
-          <div className="input-group-prepend">
-                <select className="btn mr-2" onChange={handelChnage('category')}>
-                    <option value="All">Pick Category</option>
-                    {categories.map((c, i)=> (<option key={i} value={c._id}>{c.name}</option>) )}
-                </select>
+    return (
+      <form onSubmit={searchSubmit}>
+        <span className="input-group-text">
+          <div className="input-group input-group-lg">
+            <div className="input-group-prepend">
+              <select className="btn mr-2" onChange={handelChnage("category")}>
+                <option value="All">Pick Category</option>
+                {categories.map((c, i) => (
+                  <option key={i} value={c._id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <input
+              type="search"
+              className="form-control"
+              onChange={handelChnage("search")}
+              placeholder="Search Item"
+            />
           </div>
 
-          <input
-            type="search"
-            className="form-control"
-            onChange={handelChnage("search")}
-            placeholder="Search Item"
-          />
-        </div>
-
-        <div className="btn input-group-append" style={{border: 'none'}}>
+          <div className="btn input-group-append" style={{ border: "none" }}>
             <button className="input-group-text">Search</button>
-        </div>
-      </span>
-    </form>;
+          </div>
+        </span>
+      </form>
+    );
   };
 
   useEffect(() => {
@@ -85,8 +99,12 @@ const Search = () => {
 
   return (
     <div>
-      <div className="mb-3">{searchForm()}</div>
-     
+      <div className="mb-3">
+          {searchForm()}
+      </div>
+      
+        {showSearchedProduct(result)}
+
     </div>
   );
 };
