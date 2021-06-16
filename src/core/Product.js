@@ -27,14 +27,14 @@ const Product = (props) => {
 
   return (
     <Layout
-      title="Home"
-      description="E-Commerce Website"
+      title={product.name}
+      description={product.description}
       className="container-fluid"
     >
-     <h2 className="mb-4">Single Prodcut</h2>
+     
      <Container>
          <Row>
-             {JSON.stringify(product)}
+            { product && product.description && <Card product={product} viewProductButton={false} /> }
          </Row>
      </Container>
     </Layout>
