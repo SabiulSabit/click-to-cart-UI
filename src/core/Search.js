@@ -25,11 +25,23 @@ const Search = () => {
     });
   };
 
+  //get searchData 
+  const searchData = () => {
+      console.log(search, category)
+  }
+
   //form submit
-  const searchSubmit = () => {};
+  const searchSubmit = (e) => {
+      e.preventDefault();
+
+      searchData();
+        
+  };
 
   //input on chnage
-  const handelChnage = () => {};
+  const handelChnage = (name ) => event => {
+      setData({...data, [name]: event.target.value, searched: false})
+  };
 
   //search bar
   const searchForm = () => {
@@ -65,7 +77,7 @@ const Search = () => {
 
   return (
     <div>
-      <div>{searchForm()}</div>
+      <div className="mb-3">{searchForm()}</div>
     </div>
   );
 };

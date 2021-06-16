@@ -1,5 +1,5 @@
 import { API } from "../config";
-
+import queryString from 'query-string'
 
 
 
@@ -56,3 +56,20 @@ export const getFilteredProducts = (skip, limit, filters = { }) => {
     });
 };
 
+
+
+//get serach product
+export const getSearchedProducts = (params) => {
+  
+  const query = queryString.stringify(params);
+  
+  return fetch(`${API}/products?${query}`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
