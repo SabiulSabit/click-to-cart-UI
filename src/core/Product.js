@@ -31,7 +31,7 @@ const Product = (props) => {
     const productId = props.match.params.productId;
     //console.log(productId);
     loadSingleProduct(productId);
-  }, []);
+  }, [props]);
 
   return (
     <Layout
