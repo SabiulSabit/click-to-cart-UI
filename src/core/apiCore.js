@@ -88,3 +88,18 @@ export const getSingleProdcut = (productId) =>{
       console.log(err);
     });
 }
+
+
+// get Single Product realader product 
+export const getRelatedProduct = (productId) =>{
+
+  return fetch(`${API}/product/related/${productId}`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
