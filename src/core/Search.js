@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCategorys } from "./apiCore";
+import { getCategorys, getSearchedProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 
@@ -27,7 +27,15 @@ const Search = () => {
 
   //get searchData 
   const searchData = () => {
-      console.log(search, category)
+      if(search){
+        getSearchedProducts({search: search || undefined, category: category}).then(products => {
+            if(products.error){
+                console.log(products.error);
+            }else{
+                setData({...data, result: products, searched: true})
+            }
+        })
+      }
   }
 
   //form submit
@@ -78,6 +86,7 @@ const Search = () => {
   return (
     <div>
       <div className="mb-3">{searchForm()}</div>
+     
     </div>
   );
 };
