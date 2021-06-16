@@ -93,7 +93,7 @@ export const getSingleProdcut = (productId) =>{
 // get Single Product realader product 
 export const getRelatedProduct = (productId) =>{
 
-  return fetch(`${API}/product/related/${productId}`, {
+  return fetch(`${API}/products/related/${productId}`, {
     method: "GET",
   })
     .then((data) => {
