@@ -53,11 +53,19 @@ const Search = () => {
     setData({ ...data, [name]: event.target.value, searched: false });
   };
 
+  //show search message
+  const searchMessage = () => {
+    
+  }
+
   // show the searched product
   const showSearchedProduct = (productData = []) => {
-      return <div>
+      return <Row>
+              <h2 className='mt-4 mb-4'>
+                 {searchMessage()}
+              </h2>
             {productData.map((product, i)=>(<Card key={i} product={product} />))}
-        </div>
+            </Row>
   }
 
   //search bar
