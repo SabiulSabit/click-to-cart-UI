@@ -54,19 +54,27 @@ const Search = () => {
   };
 
   //show search message
-  const searchMessage = () => {
-    
-  }
+  const searchMessage = (searched, result) => {
+    if (searched && result.length > 0) {
+      return `Found ${result.length} Products! `;
+    } else if (searched && result.length <= 0) {
+      return "No Products Found!";
+    }
+  };
 
   // show the searched product
   const showSearchedProduct = (productData = []) => {
-      return <Row>
-              <h2 className='mt-4 mb-4'>
-                 {searchMessage()}
-              </h2>
-            {productData.map((product, i)=>(<Card key={i} product={product} />))}
-            </Row>
-  }
+    return (
+      <Container>
+        <h2 className="mt-4 mb-4 ml-4">{searchMessage(searched, result)}</h2>
+        <Row>
+          {productData.map((product, i) => (
+            <Card key={i} product={product} />
+          ))}
+        </Row>
+      </Container>
+    );
+  };
 
   //search bar
   const searchForm = () => {
@@ -76,7 +84,7 @@ const Search = () => {
           <div className="input-group input-group-lg">
             <div className="input-group-prepend">
               <select className="btn mr-2" onChange={handelChnage("category")}>
-                <option value="All">Pick Category</option>
+                <option value="All">All</option>
                 {categories.map((c, i) => (
                   <option key={i} value={c._id}>
                     {c.name}
@@ -107,12 +115,9 @@ const Search = () => {
 
   return (
     <div>
-      <div className="mb-3">
-          {searchForm()}
-      </div>
-      
-        {showSearchedProduct(result)}
+      <div className="mb-3">{searchForm()}</div>
 
+      {showSearchedProduct(result)}
     </div>
   );
 };
