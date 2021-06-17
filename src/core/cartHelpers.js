@@ -1,4 +1,5 @@
 
+// add new item to cart
 export const addItem = ( item, next) =>{
     let cart = [];
     if(typeof window != 'undefined'){
@@ -14,4 +15,15 @@ export const addItem = ( item, next) =>{
         localStorage.setItem('cart', JSON.stringify(cart) )
         next();
     }
+}
+
+//cart length
+export const itemTotal = ( ) => {
+    if(typeof window !==  'undefined'){
+        if(localStorage.getItem('cart')){
+            return JSON.parse(localStorage.getItem('cart')).length;
+        }
+    }
+
+    return 0;
 }
