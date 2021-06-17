@@ -103,3 +103,22 @@ export const getRelatedProduct = (productId) =>{
       console.log(err);
     });
 }
+
+//generate braintree token
+export const getBraintreeClientToken = (userId, token) =>{
+
+  return fetch(`${API}/braintree/getToken/${userId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
