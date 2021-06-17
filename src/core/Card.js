@@ -9,6 +9,7 @@ const Card = ({
   product,
   viewProductButton = true,
   showAddToCartButton = true,
+  cartUpdate = false,
 }) => {
   const [redirect, setRedirect] = useState(false);
 
@@ -23,6 +24,10 @@ const Card = ({
       return <Redirect to="/cart" />;
     }
   };
+
+  const showCartUpdateOptions = cartUpdate =>{
+    return cartUpdate && (<div> increment/decrement </div>)
+  }
 
   return (
     <div className="card">
@@ -64,6 +69,11 @@ const Card = ({
             Add to Cart
           </button>
         )}
+
+
+        {showCartUpdateOptions(cartUpdate)}
+
+
       </div>
     </div>
   );
