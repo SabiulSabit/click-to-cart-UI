@@ -3,13 +3,16 @@ import { Link, Redirect } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import ShowImage from "./ShowImage";
 import moment, { updateLocale } from "moment";
-import { addItem, updateItem } from "./cartHelpers";
+import { addItem, updateItem, removeItem } from "./cartHelpers";
 
 const Card = ({
   product,
   viewProductButton = true,
   showAddToCartButton = true,
   cartUpdate = false,
+  showRemoveProductButton = false,
+  setRun = (f) => f,
+  run = undefined,
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
@@ -26,24 +29,49 @@ const Card = ({
     }
   };
 
-  const handelChnage = (productId) =>event =>{
+  const handelChnage = (productId) => (event) => {
+    setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
-    if(event.target.value >=1){
+    if (event.target.value >= 1) {
       updateItem(productId, event.target.value);
     }
-  }
+  };
 
-  const showCartUpdateOptions = cartUpdate =>{
-    return cartUpdate && (<div> 
-      
-                     <div className="input-group mb-3">
-                       <div className="input-group-prepend">
-                         <span className="input-group-text">Adjust Quantity</span>
-                       </div>
-                       <input type="number" className="form-control" value={count} onChange={handelChnage(product._id)} />
-                     </div>
-         </div>)
-  }
+  const showCartUpdateOptions = (cartUpdate) => {
+    return (
+      cartUpdate && (
+        <div>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Adjust Quantity</span>
+            </div>
+            <input
+              type="number"
+              className="form-control"
+              value={count}
+              onChange={handelChnage(product._id)}
+            />
+          </div>
+        </div>
+      )
+    );
+  };
+
+  const showRemoveButton = (showRemoveProductButton) => {
+    return (
+      showRemoveProductButton && (
+        <button
+          onClick={() => {
+            removeItem(product._id);
+            setRun(!run);
+          }}
+          className="btn btn-outline-danger mt-2 mb-2"
+        >
+          Remove Product{" "}
+        </button>
+      )
+    );
+  };
 
   return (
     <div className="card">
@@ -86,10 +114,9 @@ const Card = ({
           </button>
         )}
 
+        {showRemoveButton(showRemoveProductButton)}
 
         {showCartUpdateOptions(cartUpdate)}
-
-
       </div>
     </div>
   );

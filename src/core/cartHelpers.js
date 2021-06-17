@@ -58,7 +58,7 @@ export const updateItem = (productId, count) => {
 
 
 //remove item from cart
-export const removeItem = (productId, count) => {
+export const removeItem = (productId) => {
   let cart = [];
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
