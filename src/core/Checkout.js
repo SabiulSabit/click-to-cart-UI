@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Link } from "react-router-dom";
-import { getBraintreeClientToken } from "./apiCore";
+import { getBraintreeClientToken, processPayment } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import { isAuthenticate } from "../auth/index";
@@ -61,7 +61,16 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
         console.log(data);
         nonce = data.nonce;
 
-        console.log(nonce, getTotal(products));
+        const paymentData = {
+          paymentMethodNonce: nonce,
+          amount: getTotal(products),
+        };
+
+        processPayment(userId, token, paymentData)
+          .then((respone) => {
+            setData({ ...data, success: respone.success });
+          })
+          .catch((err) => console.log(err));
       })
       .catch((error) => {
         console.log(error);
@@ -71,7 +80,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
 
   const showDropIn = () => {
     return (
-      <div onBlur={()=> setData({...data, error: ""})}>
+      <div onBlur={() => setData({ ...data, error: "" })}>
         {data.clientToken !== null && products.length > 0 ? (
           <div>
             {" "}
@@ -79,7 +88,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
               options={{ authorization: data.clientToken }}
               onInstance={(instance) => (data.instance = instance)}
             />
-            <button onClick={buy} className="btn btn-success">
+            <button onClick={buy} className="btn btn-success btn-block">
               Pay
             </button>
           </div>
