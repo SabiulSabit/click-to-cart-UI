@@ -5,7 +5,7 @@ import { getProducts, getBraintreeClientToken } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import { isAuthenticate } from "../auth/index";
-import { suppressDeprecationWarnings } from "moment";
+import DropIn from "braintree-web-drop-in-react";
 
 const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   //get total price
@@ -20,21 +20,20 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   const userId = isAuthenticate() && isAuthenticate().user._id;
   const token = isAuthenticate() && isAuthenticate().token;
 
-
-  const getToken = (userId, token ) =>{
-    getBraintreeClientToken(userId, token).then(data => {
-      if(data.error){
-        setData({...data, error: data.error});
-      }else{
-       // console.log(data.clientToken);
-        setData({...data, clientToken: data.clientToken})
+  const getToken = (userId, token) => {
+    getBraintreeClientToken(userId, token).then((data) => {
+      if (data.error) {
+        setData({ ...data, error: data.error });
+      } else {
+        // console.log(data.clientToken);
+        setData({ ...data, clientToken: data.clientToken });
       }
-    })
-  } 
+    });
+  };
 
-  useEffect( () =>{
+  useEffect(() => {
     getToken(userId, token);
-  },[] )
+  }, []);
 
   const getTotal = () => {
     return products.reduce((currentvalue, nextValue) => {
@@ -45,11 +44,28 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   //show the checkout/singin button
   const showCheckout = () => {
     return isAuthenticate() ? (
-      <button className="btn btn-success">Checkout</button>
+      <div> {showDropIn()} </div>
     ) : (
       <Link to="/signin">
         <button className="btn btn-primary">Sing in to Checkout</button>
       </Link>
+    );
+  };
+
+  const showDropIn = () => {
+    return (
+      <div>
+        {data.clientToken !== null && products.length > 0 ? (
+          <div>
+            {" "}
+            <DropIn
+              options={{ authorization: data.clientToken }}
+              onInstance={(instance) => (data.instance = instance)}
+            />
+            <button className="btn btn-success">Checkout</button>
+          </div>
+        ) : null}
+      </div>
     );
   };
 
@@ -58,6 +74,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       <h2>Total: ${getTotal()}</h2>
 
       {showCheckout()}
+      { }
     </div>
   );
 };
