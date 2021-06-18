@@ -26,7 +26,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
         setData({ ...data, error: data.error });
       } else {
         // console.log(data.clientToken);
-        setData({ ...data, clientToken: data.clientToken });
+        setData({ clientToken: data.clientToken });
       }
     });
   };
@@ -108,10 +108,23 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
+
+  const showSucess = (success) => {
+    return (
+      <div
+        className="alert alert-info"
+        style={{ display: success ? "" : "none" }}
+      >
+        {"Thanks! Your Payment was Successful!"}
+      </div>
+    );
+  };
+
   return (
     <div>
       <h2>Total: ${getTotal()}</h2>
       {showError(data.error)}
+      {showSucess(data.success)}
       {showCheckout()}
       {}
     </div>
