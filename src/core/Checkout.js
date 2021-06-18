@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Link } from "react-router-dom";
 import { getBraintreeClientToken, processPayment } from "./apiCore";
+import {emptyCart} from './cartHelpers'
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import { isAuthenticate } from "../auth/index";
@@ -69,6 +70,10 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
         processPayment(userId, token, paymentData)
           .then((respone) => {
             setData({ ...data, success: respone.success });
+            emptyCart(()=>{
+              setRun(!run);
+              console.log("Cart Empty");
+            })
           })
           .catch((err) => console.log(err));
       })
