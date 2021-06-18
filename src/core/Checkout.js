@@ -1,13 +1,41 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Link } from "react-router-dom";
-import { getProducts } from "./apiCore";
+import { getProducts, getBraintreeClientToken } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import { isAuthenticate } from "../auth/index";
+import { suppressDeprecationWarnings } from "moment";
 
 const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
   //get total price
+  const [data, setData] = useState({
+    success: false,
+    clientToken: null,
+    error: "",
+    instance: {},
+    address: "",
+  });
+
+  const userId = isAuthenticate() && isAuthenticate().user._id;
+  const token = isAuthenticate() && isAuthenticate().token;
+
+
+  const getToken = (userId, token ) =>{
+    getBraintreeClientToken(userId, token).then(data => {
+      if(data.error){
+        setData({...data, error: data.error});
+      }else{
+       // console.log(data.clientToken);
+        setData({...data, clientToken: data.clientToken})
+      }
+    })
+  } 
+
+  useEffect( () =>{
+    getToken(userId, token);
+  },[] )
+
   const getTotal = () => {
     return products.reduce((currentvalue, nextValue) => {
       return currentvalue + nextValue.count * nextValue.price;
