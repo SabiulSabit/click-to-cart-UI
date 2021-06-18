@@ -122,3 +122,23 @@ export const getBraintreeClientToken = (userId, token) =>{
       console.log(err);
     });
 }
+
+//process the payment
+export const postProcessPayment = (userId, token, paymentData) =>{
+
+  return fetch(`${API}/braintree/payment/${userId}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(paymentData)
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
