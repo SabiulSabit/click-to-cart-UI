@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Link } from "react-router-dom";
-import { getBraintreeClientToken, processPayment } from "./apiCore";
-import {emptyCart} from './cartHelpers'
+import {
+  getBraintreeClientToken,
+  processPayment,
+  createOrder,
+} from "./apiCore";
+import { emptyCart } from "./cartHelpers";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card";
 import { isAuthenticate } from "../auth/index";
@@ -16,7 +20,8 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     error: "",
     instance: {},
     address: "",
-    loading: false
+    loading: false,
+    address: "",
   });
 
   const userId = isAuthenticate() && isAuthenticate().user._id;
@@ -56,9 +61,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
 
   //confirm pay
   const buy = () => {
-
-
-    setData({loading: true});
+    setData({ loading: true });
 
     let nonce;
     let getNonce = data.instance
@@ -74,17 +77,29 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
 
         processPayment(userId, token, paymentData)
           .then((respone) => {
-            setData({ ...data, success: respone.success });
-            emptyCart(()=>{
-              setRun(!run);
-              setData({loading: false});
-              console.log("Cart Empty");
-            })
+            const orderData = {
+              products: products,
+              trasaction_id: respone.transaction.id,
+              amount: respone.transaction.amount,
+              address: data.address,
+            };
+            createOrder(userId, token, orderData)
+              .then((ord) => {
+                setData({ ...data, success: respone.success });
+                emptyCart(() => {
+                  setRun(!run);
+                  setData({ loading: false });
+                  console.log("Cart Empty");
+                });
+              })
+              .catch((orderErr) => {
+                console.log(orderErr);
+              });
           })
           .catch((err) => {
-            setData({loading: false});
+            setData({ loading: false });
             console.log(err);
-          } );
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -92,12 +107,24 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       });
   };
 
+  const handelAddress = (event) => {
+    setData({ ...data, address: event.target.value });
+  };
+
   const showDropIn = () => {
     return (
       <div onBlur={() => setData({ ...data, error: "" })}>
         {data.clientToken !== null && products.length > 0 ? (
           <div>
-            {" "}
+            <div className="form-group mb-3">
+              <label className="text-muted">Delivery Address: </label>
+              <textarea
+                onChange={handelAddress}
+                className="form-control"
+                value={data.address}
+                placeholder="Enter your delivery address"
+              />
+            </div>{" "}
             <DropIn
               options={{ authorization: data.clientToken }}
               onInstance={(instance) => (data.instance = instance)}
@@ -122,7 +149,6 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
-
   const showSucess = (success) => {
     return (
       <div
@@ -134,9 +160,9 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
- const showLoading = loading => {
-   return loading && <h2>Loading ...</h2>
- }
+  const showLoading = (loading) => {
+    return loading && <h2>Loading ...</h2>;
+  };
 
   return (
     <div>
@@ -145,7 +171,6 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       {showSucess(data.success)}
       {showLoading(data.loading)}
       {showCheckout()}
-     
     </div>
   );
 };
