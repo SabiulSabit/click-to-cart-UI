@@ -16,6 +16,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     error: "",
     instance: {},
     address: "",
+    loading: false
   });
 
   const userId = isAuthenticate() && isAuthenticate().user._id;
@@ -55,6 +56,10 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
 
   //confirm pay
   const buy = () => {
+
+
+    setData({loading: true});
+
     let nonce;
     let getNonce = data.instance
       .requestPaymentMethod()
@@ -72,10 +77,14 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
             setData({ ...data, success: respone.success });
             emptyCart(()=>{
               setRun(!run);
+              setData({loading: false});
               console.log("Cart Empty");
             })
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            setData({loading: false});
+            console.log(err);
+          } );
       })
       .catch((error) => {
         console.log(error);
@@ -125,13 +134,18 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
+ const showLoading = loading => {
+   return loading && <h2>Loading ...</h2>
+ }
+
   return (
     <div>
       <h2>Total: ${getTotal()}</h2>
       {showError(data.error)}
       {showSucess(data.success)}
+      {showLoading(data.loading)}
       {showCheckout()}
-      {}
+     
     </div>
   );
 };
