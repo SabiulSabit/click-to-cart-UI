@@ -53,6 +53,7 @@ export const getCategorys = () => {
 
 //get the order list
 export const getOrderList = (userId, token) => {
+  console.log(userId)
   return fetch(`${API}/order/list/: ${userId}`, {
     method: "GET",
     headers: {
@@ -61,6 +62,7 @@ export const getOrderList = (userId, token) => {
     },
   })
     .then((data) => {
+      console.log("Order: "+data);
       return data.json();
     })
     .catch((err) => {

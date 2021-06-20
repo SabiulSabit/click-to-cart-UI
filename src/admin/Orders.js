@@ -24,10 +24,15 @@ const Orders = () => {
            loadOrders()
     }, [] )
 
+    const noOrder = (orders) =>{
+      return orders.length < 1  ? <h4> No Orders</h4> : null;
+    }
+
     return (
-        <div>
-            
-        </div>
+        <Layout title="All Orders" description="E-Commerce Website">
+         {noOrder(orders)}
+         {JSON.stringify(orders)}
+      </Layout>
     )
 }
 
