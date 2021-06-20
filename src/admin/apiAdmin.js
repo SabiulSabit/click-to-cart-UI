@@ -49,3 +49,21 @@ export const getCategorys = () => {
       console.log(err);
     });
 };
+
+
+//get the order list
+export const getOrderList = (userId, token) => {
+  return fetch(`${API}/order/list/: ${userId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
