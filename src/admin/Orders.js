@@ -11,6 +11,7 @@ const Orders = () => {
     const {user, token} = isAuthenticate();
     
     const loadOrders = () =>{
+        console.log(user._id)
         getOrderList(user._id, token).then(data => {
             if(data.error){
                 console.log(data.error);
