@@ -58,6 +58,8 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       </Link>
     );
   };
+ 
+  let delivery = data.address
 
   //confirm pay
   const buy = () => {
@@ -67,7 +69,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     let getNonce = data.instance
       .requestPaymentMethod()
       .then((data) => {
-        console.log(data);
+       // console.log(data);
         nonce = data.nonce;
 
         const paymentData = {
@@ -79,17 +81,17 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
           .then((respone) => {
             const orderData = {
               products: products,
-              trasaction_id: respone.transaction.id,
+              transaction_id: respone.transaction.id,
               amount: respone.transaction.amount,
-              address: data.address,
+              address: delivery,
             };
             createOrder(userId, token, orderData)
               .then((ord) => {
-                setData({ ...data, success: respone.success });
+          
                 emptyCart(() => {
                   setRun(!run);
-                  setData({ loading: false });
-                  console.log("Cart Empty");
+                  setData({ loading: false,success: true });
+                 // console.log("Cart Empty");
                 });
               })
               .catch((orderErr) => {
