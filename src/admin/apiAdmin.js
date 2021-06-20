@@ -53,7 +53,7 @@ export const getCategorys = () => {
 
 //get the order list
 export const getOrderList = (userId, token) => {
-  console.log(userId)
+ // console.log(userId)
   return fetch(`${API}/order/list/${userId}`, {
     method: "GET",
     headers: {
@@ -62,7 +62,26 @@ export const getOrderList = (userId, token) => {
     },
   })
     .then((data) => {
-      console.log("Order: "+data);
+     // console.log("Order: "+data);
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//get status  values
+export const getStatusValues = (userId, token) => {
+  //console.log(userId)
+  return fetch(`${API}/order/status-values/${userId}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((data) => {
+    //  console.log("Order: "+data);
       return data.json();
     })
     .catch((err) => {
