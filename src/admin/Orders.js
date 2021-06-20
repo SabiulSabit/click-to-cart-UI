@@ -25,13 +25,18 @@ const Orders = () => {
            loadOrders()
     }, [] )
 
-    const noOrder = (orders) =>{
-      return orders.length < 1  ? <h4> No Orders</h4> : null;
+    const showTotalOrder = () =>{
+       if(orders.length){
+           return  (<h1 className="text-danger display-2">Total orders: {orders.length}</h1>)
+       }
+       else{
+        return  (<h1 className="text-danger">No orders</h1>)
+       }
     }
 
     return (
         <Layout title="All Orders" description="E-Commerce Website">
-         {noOrder(orders)}
+         {showTotalOrder()}
          {JSON.stringify(orders)}
       </Layout>
     )
