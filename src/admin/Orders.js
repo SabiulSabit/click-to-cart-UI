@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
-import { getOrderList, getStatusValues } from "./apiAdmin";
+import { getOrderList, getStatusValues, updateOrderStatus } from "./apiAdmin";
 import moment from "moment";
 
 const Orders = () => {
@@ -60,7 +60,15 @@ const Orders = () => {
   };
    
   const handleChange= (e, orderId) =>{
-          console.log("Status chnage")
+    
+    updateOrderStatus(user._id, token, orderId, e.target.value).then(data => {
+      if(data.error) {
+        console.log(data.error)
+      }
+      else{
+        loadOrders();
+      }
+    })
   }
 
   const showStatus = (order) => {
