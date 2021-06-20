@@ -2,16 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
-import { getOrderList } from "./apiAdmin";
+import { getOrderList, getStatusValues } from "./apiAdmin";
 import moment from "moment";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [statusValues, setStatusValues] = useState([]);
 
   const { user, token } = isAuthenticate();
 
   const loadOrders = () => {
-    console.log(user._id);
+    // console.log(user._id);
     getOrderList(user._id, token).then((data) => {
       if (data.error) {
         console.log(data.error);
@@ -21,8 +22,20 @@ const Orders = () => {
     });
   };
 
+  const loadStatus = () => {
+    //console.log(user._id);
+    getStatusValues(user._id, token).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setStatusValues(data);
+      }
+    });
+  };
+
   useEffect(() => {
     loadOrders();
+    loadStatus();
   }, []);
 
   const showTotalOrder = () => {
@@ -35,19 +48,39 @@ const Orders = () => {
     }
   };
 
-  const showProductDetails = (key, value) =>{
-      return <div className="input-group mb-2 mr-2 mr-sm-2">
-            <div className="input-group-prepend">
-                    <div className="input-group-text">{key}</div>
-            </div>
-            <input type="text" value={value} className="form-control" readOnly />
+  const showProductDetails = (key, value) => {
+    return (
+      <div className="input-group mb-2 mr-2 mr-sm-2">
+        <div className="input-group-prepend">
+          <div className="input-group-text">{key}</div>
+        </div>
+        <input type="text" value={value} className="form-control" readOnly />
       </div>
+    );
+  };
+   
+  const handleChange= (e, orderId) =>{
+          console.log("Status chnage")
   }
+
+  const showStatus = (order) => {
+    return (
+      <div className="form-group">
+        {" "}
+        <h3 className="mark mb-4">Status: {order.status}</h3>{" "}
+        <select className="form-control" onChange={ (e)=> handleChange(e,order._id)}>
+             <option>Update Status</option>
+             {statusValues.map( (status, index) => (<option key={index} value={status}>{status}</option>) )}
+        </select>
+      </div>
+    );
+  };
 
   return (
     <Layout title="All Orders" description="E-Commerce Website">
       {showTotalOrder()}
       {orders.map((order, orderIndex) => {
+        console.log(order)
         return (
           <Container>
             <Row>
@@ -64,7 +97,7 @@ const Orders = () => {
                     </span>{" "}
                   </h2>
                   <ul className="list-group mb-2">
-                    <li className="list-group-item">{order.status}</li>
+                    <li className="list-group-item">{showStatus(order)}</li>
                     <li className="list-group-item">
                       Transaction ID: {order.transaction_id}
                     </li>
@@ -82,16 +115,19 @@ const Orders = () => {
                   <h3 className="mt-4 mb-4">
                     Total products in the order : {order.products.length}
                   </h3>
-                   
-                   {order.products.map( (product, productIndex) => (
-                       <div className="mb-4" key={productIndex} style={{padding: "20px", border: "1px solid indigo"}}>
-                           {showProductDetails('Product Name', product.name)}
-                           {showProductDetails('Product Price', product.price)}
-                           {showProductDetails('Product Total', product.count)}
-                           {showProductDetails('Product ID', product._id)}
-                       </div>
-                   ))}
 
+                  {order.products.map((product, productIndex) => (
+                    <div
+                      className="mb-4"
+                      key={productIndex}
+                      style={{ padding: "20px", border: "1px solid indigo" }}
+                    >
+                      {showProductDetails("Product Name", product.name)}
+                      {showProductDetails("Product Price", product.price)}
+                      {showProductDetails("Product Total", product.count)}
+                      {showProductDetails("Product ID", product._id)}
+                    </div>
+                  ))}
                 </div>
               </Col>
             </Row>
