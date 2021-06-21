@@ -10,14 +10,22 @@ const Profile = (props) => {
   const [values, setValues] = useState({
       name: '',
       password: '',
-      error: '',
+      error: false,
       success: false,
   })
 
   const  {name, password, error, success} = values;
+  const {token} = isAuthenticate();
 
   const init = (userId) => {
-   console.log(userId);
+    getUserInfo(userId,token).then(data => {
+        if(data.error ){
+            setValues({...values, error: true});
+        }
+        else{
+            setValues({...values, name: data.name, success: true})
+        }
+    } )
   }
 
   useEffect( () =>{
@@ -27,6 +35,7 @@ const Profile = (props) => {
     return (
         <Layout title="Update Profile" description="E-Commerce Website">
               <h2 className="mb-4">Profile Update</h2>
+              {JSON.stringify(values)}
     </Layout>
     )
 }
