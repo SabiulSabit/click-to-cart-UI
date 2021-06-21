@@ -111,3 +111,37 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
     });
 };
 
+//get all products
+export const getProducts = () => {
+  return fetch(`${API}/products`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+//delete a product
+export const deleteProduct = (proiductId, userId, token) => {
+  //console.log(userId)
+  return fetch(`${API}/product/${proiductId}/${userId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((data) => {
+    //  console.log("Order: "+data);
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
