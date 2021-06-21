@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
-import { createProduct, getCategorys } from "./apiAdmin";
+import { getSingleProduct, getCategorys, updateProduct } from "./apiAdmin";
+import { Redirect } from "react-router-dom";
 
-const UpdateProdcut = () => {
+const UpdateProdcut = ({match}) => {
   const form = useRef(null);
   let [category, setCategory] = useState([]);
   let [values, setValues] = useState({
@@ -26,11 +27,29 @@ const UpdateProdcut = () => {
   const { user, token } = isAuthenticate();
   const { loading, error, createProductName, redirectToProfile } = values;
 
+  
+  const init = (productId) =>{
+      getSingleProduct(productId).then(data => {
+          if(data.error){
+              setValues({...values, error: data.error});
+          }else{
+            setValue("photo", "", { shouldValidate: false });
+            setValue("name", data.name, { shouldValidate: false });
+            setValue("description", data.description, { shouldValidate: false });
+            setValue("price", data.price, { shouldValidate: false });
+            setValue("quantity", data.quantity, { shouldValidate: false });
+            setValue("category", data.category, { shouldValidate: false });
+            setValue("shipping", data.shipping, { shouldValidate: false });
+          }
+      })
+  }
+ 
   //load categories and use it
   useEffect(() => {
+      init(match.params.productId)
     getCategorys().then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({error: data.error });
       } else {
         setCategory((category) => data);
       }
@@ -45,7 +64,7 @@ const UpdateProdcut = () => {
 
     setValues({ ...values, error: "", loading: true });
 
-    createProduct(user._id, token, data1)
+    updateProduct(match.params.productId,user._id, token, data1)
       .then((data) => {
         if (data.error) {
           setValues({ ...values, error: data.error });
@@ -61,6 +80,7 @@ const UpdateProdcut = () => {
             ...values,
             error: "",
             loading: false,
+            redirectToProfile: true,
             createProductName: data.result.name,
           });
         }
@@ -80,7 +100,7 @@ const UpdateProdcut = () => {
             <input
               type="file"
               accept="image/*"
-              {...register("photo", { required: true })}
+              {...register("photo")}
             />
           </label>
         </div>
@@ -96,7 +116,7 @@ const UpdateProdcut = () => {
             id="name"
             placeholder="Product Name"
             className="form-control"
-            {...register("name", { required: true, maxLength: 32 })}
+            {...register("name", { maxLength: 32 })}
           />
         </div>
         <div className="form-group">
@@ -111,7 +131,7 @@ const UpdateProdcut = () => {
             id="description"
             placeholder="Product Description"
             className="form-control"
-            {...register("description", { required: true, maxLength: 100 })}
+            {...register("description", { maxLength: 100 })}
           />
         </div>
         <div className="form-group">
@@ -126,7 +146,7 @@ const UpdateProdcut = () => {
             id="price"
             placeholder="Product Price"
             className="form-control"
-            {...register("price", { required: true })}
+            {...register("price")}
           />
         </div>
         <div className="form-group">
@@ -141,7 +161,7 @@ const UpdateProdcut = () => {
             id="category"
             placeholder="Product Category"
             className="form-control"
-            {...register("category", { required: true })}
+            {...register("category")}
           >
             <option>Pleaes Select One</option>
 
@@ -164,7 +184,7 @@ const UpdateProdcut = () => {
             id="shipping"
             placeholder="Shipping"
             className="form-control"
-            {...register("shipping", { required: true })}
+            {...register("shipping")}
           >
             <option>Pleaes Select One</option>
             <option value="0">No</option>
@@ -183,11 +203,11 @@ const UpdateProdcut = () => {
             id="quantity"
             placeholder="Quantity"
             className="form-control"
-            {...register("quantity", { required: true })}
+            {...register("quantity")}
           />
         </div>
         <button className="btn btn-outline-primary" type="submit">
-          Create Product
+          Update Product
         </button>
       </form>
     );
@@ -204,7 +224,7 @@ const UpdateProdcut = () => {
 
   const showSuccess = () => (
     <div className="alert alert-info" style={{ display: createProductName ? "" : "none" }}>
-       <h3> {`${createProductName} is Created !`} </h3>
+       <h3> {`${createProductName} is Updated !`} </h3>
     </div>
   );
 
@@ -213,8 +233,17 @@ const UpdateProdcut = () => {
   );
 
 
+  const redirectUser = () =>{
+      if(redirectToProfile){
+          if(!error){
+              return <Redirect to="/" />
+          }
+      }
+  }
+
+
   return (
-    <Layout title="Add New Product" description="E-Commerce Website">
+    <Layout title="Update Product" description="E-Commerce Website">
       <Container>
         <Row>
           <Col md={8} className="offset-2">
@@ -222,6 +251,7 @@ const UpdateProdcut = () => {
             {showSuccess()}
             {showError()}
             {newPostForm()}
+            {redirectUser()}
           </Col>
         </Row>
       </Container>
