@@ -124,6 +124,19 @@ export const getProducts = () => {
     });
 };
 
+//get single products
+export const getSingleProduct = (productId) => {
+  return fetch(`${API}/product/${productId}`, {
+    method: "GET",
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 
 //delete a product
 export const deleteProduct = (proiductId, userId, token) => {
