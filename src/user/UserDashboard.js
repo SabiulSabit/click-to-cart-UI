@@ -1,14 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Layout from "../core/Layout";
+import moment from "moment";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { Link } from "react-router-dom";
+import {getOrderHistory} from './apiUser'
 
 const Dashboard = () => {
+
+  const [history, setHistory] = useState([]);
+
   const {
     user: {_id, name, email, role },
   } = isAuthenticate();
 
+ const  {token} = isAuthenticate();
+
+
+  const init = (userId, token) =>{
+    getOrderHistory(userId, token).then(data => {
+      if(data.error){
+        console.log(data.error)
+      }else{
+        setHistory(data)
+      }
+    })
+  }
+
+  useEffect(  () =>{
+    init(_id, token);
+  },[])
+  
+ 
   const userLinks = () => {
     return (
       <div className="card">
@@ -45,16 +68,37 @@ const Dashboard = () => {
     );
   };
 
-  const purchaseHistory = () => {
+  const purchaseHistory = history => {
     return (
-      <div className="card mb-5">
-        <h3 className="card-header">Purchase History</h3>
-        <ul className="list-group">
-          <li className="list-group-item">History</li>
-        </ul>
-      </div>
+        <div className="card mb-5">
+            <h3 className="card-header">Purchase history</h3>
+            <ul className="list-group">
+                <li className="list-group-item">
+                    {history.map((h, i) => {
+                        return (
+                            <div>
+                                <hr />
+                                <h4>Status: {h.status}</h4>
+                                {h.products.map((p, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <h6>Product name: {p.name}</h6>
+                                            <h6>Product price: ${p.price}</h6>
+                                            <h6>
+                                                Purchased date:{" "}
+                                                {moment(p.createdAt).fromNow()}
+                                            </h6>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        );
+                    })}
+                </li>
+            </ul>
+        </div>
     );
-  };
+};
 
   return (
     <Layout title="User Dashboard" description="User Dashboard">
@@ -65,7 +109,7 @@ const Dashboard = () => {
                 </Col>
                 <Col md={9}>
                     {userInfo()}
-                    {purchaseHistory()}
+                    {purchaseHistory(history)}
                 </Col>
             </Row>
       </Container>
