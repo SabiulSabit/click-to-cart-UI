@@ -158,3 +158,24 @@ export const deleteProduct = (proiductId, userId, token) => {
     });
 };
 
+
+//update a product
+export const updateProduct = (proiductId, userId, token, product) => {
+  //console.log(userId)
+  return fetch(`${API}/product/${proiductId}/${userId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: product
+  })
+    .then((data) => {
+    //  console.log("Order: "+data);
+      return data.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
