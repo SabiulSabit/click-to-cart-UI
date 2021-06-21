@@ -5,6 +5,9 @@ import { isAuthenticate } from "../auth/index";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
+   
+    
+
     return (
         <div>
             <h2>Profile</h2>

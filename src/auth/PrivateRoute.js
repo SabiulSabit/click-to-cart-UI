@@ -3,9 +3,9 @@ import { Route, Redirect } from "react-router-dom";
 import { isAuthenticate } from "./index";
 import UserDashboard from "../user/UserDashboard";
 
-function PrivateRoute({component,children, ...rest }) {
+function PrivateRoute({component,path,children, ...rest }) {
   if (isAuthenticate()) {
-    return <Route path="/user/dashboard" exact component={component} />;
+    return <Route path={path} exact component={component} />;
   } else {
     return (
       <Redirect
