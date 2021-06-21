@@ -113,7 +113,7 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
 
 //get all products
 export const getProducts = () => {
-  return fetch(`${API}/products`, {
+  return fetch(`${API}/products?limit=100`, {
     method: "GET",
   })
     .then((data) => {
