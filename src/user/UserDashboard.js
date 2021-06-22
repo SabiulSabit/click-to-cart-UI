@@ -34,16 +34,16 @@ const Dashboard = () => {
  
   const userLinks = () => {
     return (
-      <div className="card">
+      <div className="card bg-dark text-light">
         <h4 className="card-header">User Links</h4>
         <ul className="list-group">
-          <li className="list-group-item">
-            <Link className="nav-link" to="/cart">
+          <li className="list-group-item bg-secondary">
+            <Link className="sideBarLink" to="/cart">
               My Cart
             </Link>
           </li>
-          <li className="list-group-item">
-            <Link className="nav-link" to={`/profile/${_id}`}>
+          <li className="list-group-item bg-secondary">
+            <Link className="sideBarLink" to={`/profile/${_id}`}>
               Update Profile
             </Link>
           </li>
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
   const userInfo = () => {
     return (
-      <div className="card mb-5">
+      <div className="card dashBoardCard mb-5">
         <h3 className="card-header">User Information</h3>
         <ul className="list-group">
           <li className="list-group-item">{name}</li>
@@ -70,7 +70,7 @@ const Dashboard = () => {
 
   const purchaseHistory = history => {
     return (
-        <div className="card mb-5">
+        <div className="card dashBoardCard mb-5">
             <h3 className="card-header">Purchase history</h3>
             <ul className="list-group">
                 <li className="list-group-item">
@@ -78,7 +78,7 @@ const Dashboard = () => {
                         return (
                             <div>
                                 <hr />
-                                <h4>Status: {h.status}</h4>
+                                <h4 className="text-danger">Status: {h.status}</h4>
                                 {h.products.map((p, i) => {
                                     return (
                                         <div key={i}>

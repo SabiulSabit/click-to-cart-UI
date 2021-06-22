@@ -10,7 +10,18 @@ h2{
     border-radius: 0px;
 } 
 
+.dashBoardCard{
+    background-color: #feb062;
+}
+.sideBarLink{
+    color: whitesmoke;
+    font-size: 18px;
+}
 
+.sideBarLink:hover{
+    text-decoration: none;
+    color: whitesmoke;
+}
 
 /* Image card */
 .product-img{
@@ -28,6 +39,8 @@ h2{
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
 }
+
+
 
 @-webkit-keyframes Gradient {
     0% {
