@@ -1,0 +1,9 @@
+.bg{
+    background-color: #20232A;
+    color: #20232A;
+}
+
+.nav-link:hover{
+   border: none;
+   border-bottom: 1px solid white ;
+}

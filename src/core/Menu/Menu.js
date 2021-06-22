@@ -1,101 +1,96 @@
 import React from "react";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticate } from "../../auth/index";
-import  {itemTotal} from '../cartHelpers'
+import { itemTotal } from "../cartHelpers";
+import "./Menu.css";
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "red" };
+    return { color: "#feb062" };
   } else {
-    return { color: "black" };
+    return { color: "white" };
   }
 };
 
 const Menu = ({ history }) => {
   return (
     <div>
-      <ul className="nav nav-tabs bg-primary">
-        <li className="nav-item">
-          <Link className="nav-link" style={isActive(history, "/")} to="/">
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#home">Encodemy</Navbar.Brand>
+        <Nav className="ml-auto">
+          <Nav.Link
+            as={Link}
+            className="nav-link"
+            to="/"
+            style={isActive(history, "/")}
+          >
             Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" style={isActive(history, "/shop")} to="/shop">
+          </Nav.Link>
+          <Nav.Link as={Link} to="/shop" style={isActive(history, "/shop")}>
             Shop
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" style={isActive(history, "/cart")} to="/cart">
-            Cart <sup> <small className="cart-badge">{itemTotal()}</small> </sup>
-          </Link>
-        </li>
+          </Nav.Link>
+          <Nav.Link as={Link} to="/cart" style={isActive(history, "/cart")}>
+            Cart
+          </Nav.Link>
 
-        {isAuthenticate() && isAuthenticate().user.role === 0 && (
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              style={isActive(history, "/user/dashboard")}
+          {isAuthenticate() && isAuthenticate().user.role === 0 && (
+            <Nav.Link
+              as={Link}
               to="/user/dashboard"
+              style={isActive(history, "/user/dashboard")}
             >
               Dashboard
-            </Link>
-          </li>
-        )}
+            </Nav.Link>
+          )}
 
-        {isAuthenticate() && isAuthenticate().user.role === 1 && (
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              style={isActive(history, "/admin/dashboard")}
+          {isAuthenticate() && isAuthenticate().user.role === 1 && (
+            <Nav.Link
+              as={Link}
               to="/admin/dashboard"
+              style={isActive(history, "/admin/dashboard")}
             >
               Dashboard
-            </Link>
-          </li>
-        )}
+            </Nav.Link>
+          )}
 
-        {!isAuthenticate() && (
-          <>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                style={isActive(history, "/signin")}
+          {!isAuthenticate() && (
+            <>
+              <Nav.Link
+                as={Link}
                 to="/signin"
+                style={isActive(history, "/signin")}
               >
                 Signin
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                style={isActive(history, "/signup")}
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
                 to="/signup"
+                style={isActive(history, "/signup")}
               >
                 Signup
-              </Link>
-            </li>
-          </>
-        )}
+              </Nav.Link>
+            </>
+          )}
 
-        {isAuthenticate() && (
-          <>
-            <li className="nav-item">
-              <span
-                className="nav-link"
-                style={{ cursor: "pointer", color: "black" }}
+          {isAuthenticate() && (
+            <>
+              <Nav.Link
+                as={Link}
+                to="/"
+                style={{ cursor: "pointer", color: "white" }}
                 onClick={() =>
                   signout(() => {
                     history.push("/");
                   })
                 }
               >
-                Signout
-              </span>
-            </li>
-          </>
-        )}
-      </ul>
+               Signout
+              </Nav.Link>
+            </>
+          )}
+        </Nav>
+      </Navbar>
     </div>
   );
 };
