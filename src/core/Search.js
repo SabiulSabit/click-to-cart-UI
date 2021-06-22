@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCategorys, getSearchedProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 const Search = () => {
   const [data, setData] = useState({
@@ -35,6 +35,7 @@ const Search = () => {
         if (products.error) {
           console.log(products.error);
         } else {
+        // console.log(products)
           setData({ ...data, result: products, searched: true });
         }
       });

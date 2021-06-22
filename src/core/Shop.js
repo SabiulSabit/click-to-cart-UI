@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card";
+import Card from "./Card/Card";
 import { getCategorys, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";

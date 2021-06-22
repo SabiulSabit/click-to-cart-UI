@@ -8,7 +8,7 @@ import {
 } from "./apiCore";
 import { emptyCart } from "./cartHelpers";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card";
+import Card from "./Card/Card";
 import { isAuthenticate } from "../auth/index";
 import DropIn from "braintree-web-drop-in-react";
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import ShowImage from "./ShowImage";
+import ShowImage from "../ShowImage";
 import moment, { updateLocale } from "moment";
-import { addItem, updateItem, removeItem } from "./cartHelpers";
+import { addItem, updateItem, removeItem } from "../cartHelpers";
 
 const Card = ({
   product,
@@ -97,14 +97,6 @@ const Card = ({
           Added on: {moment(product.createdAt).fromNow()}{" "}
         </p>
 
-        <Link to={`/product/${product._id}`}>
-          {viewProductButton && (
-            <button className="btn btn-outline-primary mt-2 mb-2 mr-2">
-              View Product{" "}
-            </button>
-          )}
-        </Link>
-
         {showAddToCartButton && (
           <button
             onClick={addToCart}
@@ -113,6 +105,14 @@ const Card = ({
             Add to Cart
           </button>
         )}
+
+        <Link to={`/product/${product._id}`}>
+          {viewProductButton && (
+            <button className="btn btn-outline-primary mt-2 mb-2 ml-2">
+              View Product{" "}
+            </button>
+          )}
+        </Link>
 
         {showRemoveButton(showRemoveProductButton)}
 

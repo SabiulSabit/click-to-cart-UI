@@ -2,6 +2,10 @@ body{
     background-color: whitesmoke;
 }
 
+h2{
+    font-family: 'Ubuntu', sans-serif;
+}
+
 .btn, .jumbotron, .nav :hover{
     border-radius: 0px;
 } 

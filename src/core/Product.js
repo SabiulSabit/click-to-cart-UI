@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { getSingleProdcut, getRelatedProduct } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 const Product = (props) => {
   const [product, setProduct] = useState({});
