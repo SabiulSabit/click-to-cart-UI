@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getCategorys, getSearchedProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Card from "./Card/Card";
 
 const Search = () => {
@@ -93,17 +95,19 @@ const Search = () => {
                 ))}
               </select>
             </div>
-
+              
             <input
               type="search"
               className="form-control"
               onChange={handelChnage("search")}
               placeholder="Search Item"
             />
+          
           </div>
 
           <div className="btn input-group-append" style={{ border: "none" }}>
-            <button className="input-group-text">Search</button>
+            <button className="input-group-text">Search..  <FontAwesomeIcon icon={faSearch} /></button>
+           
           </div>
         </span>
       </form>
