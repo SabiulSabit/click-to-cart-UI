@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import { signout, isAuthenticate } from "../auth/index";
-import  {itemTotal} from './cartHelpers'
+import { signout, isAuthenticate } from "../../auth/index";
+import  {itemTotal} from '../cartHelpers'
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
