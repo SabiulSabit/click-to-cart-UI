@@ -3,6 +3,8 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticate } from "../../auth/index";
 import { itemTotal } from "../cartHelpers";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus, faSignInAlt, faUserPlus, faHome, faStore, faChartLine, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import "./Menu.css";
 
 const isActive = (history, path) => {
@@ -17,21 +19,21 @@ const Menu = ({ history }) => {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Encodemy</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Encodemy</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link
             as={Link}
-            className="nav-link"
+            
             to="/"
             style={isActive(history, "/")}
           >
-            Home
+            Home <FontAwesomeIcon icon={faHome} />
           </Nav.Link>
           <Nav.Link as={Link} to="/shop" style={isActive(history, "/shop")}>
-            Shop
+            Shop <FontAwesomeIcon icon={faStore} />
           </Nav.Link>
           <Nav.Link as={Link} to="/cart" style={isActive(history, "/cart")}>
-            Cart
+            Cart <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup>
           </Nav.Link>
 
           {isAuthenticate() && isAuthenticate().user.role === 0 && (
@@ -40,7 +42,7 @@ const Menu = ({ history }) => {
               to="/user/dashboard"
               style={isActive(history, "/user/dashboard")}
             >
-              Dashboard
+              Dashboard <FontAwesomeIcon icon={faChartLine} />
             </Nav.Link>
           )}
 
@@ -50,7 +52,7 @@ const Menu = ({ history }) => {
               to="/admin/dashboard"
               style={isActive(history, "/admin/dashboard")}
             >
-              Dashboard
+              Dashboard <FontAwesomeIcon icon={faChartLine} />
             </Nav.Link>
           )}
 
@@ -61,14 +63,14 @@ const Menu = ({ history }) => {
                 to="/signin"
                 style={isActive(history, "/signin")}
               >
-                Signin
+                Signin  <FontAwesomeIcon icon={faSignInAlt} />
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/signup"
                 style={isActive(history, "/signup")}
               >
-                Signup
+                Signup <FontAwesomeIcon icon={faUserPlus} />
               </Nav.Link>
             </>
           )}
@@ -85,7 +87,7 @@ const Menu = ({ history }) => {
                   })
                 }
               >
-               Signout
+               Signout  <FontAwesomeIcon icon={faSignOutAlt} />
               </Nav.Link>
             </>
           )}
