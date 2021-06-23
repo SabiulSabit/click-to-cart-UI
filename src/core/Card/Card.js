@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Col, Card } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import ShowImage from "../ShowImage";
 import moment, { updateLocale } from "moment";
 import { addItem, updateItem, removeItem } from "../cartHelpers";
 import './card.css'
 
-const Card_show = ({
+const Card = ({
   product,
   viewProductButton = true,
   showAddToCartButton = true,
@@ -78,7 +78,7 @@ const Card_show = ({
      
      <div className="card">
       {shouldRedirect(redirect)}
-      <div className="card-header name">{product.name}</div>
+      <div className="card-header cat-name">{product.category && product.category.name}</div>
       <div className="card-body">
         {product.quantity > 0 ? (
           <span className="badge badge-primary badge-pill float-right">
@@ -90,11 +90,12 @@ const Card_show = ({
 
         <br />
         <ShowImage item={product} url="product" />
-        <p className="lead mt-2"> {product.description.substring(0, 50)} </p>
-        <p className="black-10"> $ {product.price} </p>
+        {/* <p className="lead mt-2"> {product.description.substring(0, 50)} </p> */}
+        
         <p className="black-9">
-          Category: {product.category && product.category.name}{" "}
+          Product Name: {product.name}
         </p>
+        <p className="black-10"> $ {product.price} </p>
         <p className="black-8">
           Added on: {moment(product.createdAt).fromNow()}{" "}
         </p>
@@ -125,4 +126,4 @@ const Card_show = ({
   );
 };
 
-export default Card_show;
+export default Card;

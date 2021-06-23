@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
 
-.name{
+p{
+    font-family: 'Benne', serif;
+    font-size: 18px;
+}
+.cat-name{
     background-color: #364f6b;
     color: white;
     font-weight: bold;

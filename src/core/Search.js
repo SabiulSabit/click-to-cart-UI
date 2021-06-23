@@ -69,7 +69,7 @@ const Search = () => {
   const showSearchedProduct = (productData = []) => {
     return (
       <Container>
-        <h2 className="mt-4 mb-4 ml-4">{searchMessage(searched, result)}</h2>
+        <h3 className="mt-4 mb-4 ml-4">{searchMessage(searched, result)}</h3>
         <Row>
           {productData.map((product, i) => (
             <Card key={i} product={product} />

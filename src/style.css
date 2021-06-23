@@ -4,6 +4,8 @@ body{
 
 h2{
     font-family: 'Ubuntu', sans-serif;
+    color: #17b978;
+    border-bottom: 1px solid #17b978;
 }
 
 .btn, .jumbotron, .nav :hover{
