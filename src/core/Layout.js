@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu/Menu";
+import Footer from "./Footer/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css'
 
@@ -20,6 +21,8 @@ const Layout = ({
       <div className={className}>
             {children}
       </div>
+
+      <Footer />
     </div>
   );
 };
