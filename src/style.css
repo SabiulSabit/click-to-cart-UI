@@ -25,7 +25,9 @@ h2{
 
 /* Image card */
 .product-img{
-    min-height: 100px;
+    /* min-height: 100px; */
+    width: 100%;
+    height: auto;
 }
 
 

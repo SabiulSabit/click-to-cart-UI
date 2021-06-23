@@ -27,13 +27,13 @@ const Menu = ({ history }) => {
             to="/"
             style={isActive(history, "/")}
           >
-            Home <FontAwesomeIcon icon={faHome} />
+            <FontAwesomeIcon icon={faHome} /> Home 
           </Nav.Link>
           <Nav.Link as={Link} to="/shop" style={isActive(history, "/shop")}>
-            Shop <FontAwesomeIcon icon={faStore} />
+          <FontAwesomeIcon icon={faStore} /> Shop 
           </Nav.Link>
           <Nav.Link as={Link} to="/cart" style={isActive(history, "/cart")}>
-            Cart <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup>
+          <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup> Cart 
           </Nav.Link>
 
           {isAuthenticate() && isAuthenticate().user.role === 0 && (
@@ -42,7 +42,7 @@ const Menu = ({ history }) => {
               to="/user/dashboard"
               style={isActive(history, "/user/dashboard")}
             >
-              Dashboard <FontAwesomeIcon icon={faChartLine} />
+              <FontAwesomeIcon icon={faChartLine} />Dashboard 
             </Nav.Link>
           )}
 
@@ -52,7 +52,7 @@ const Menu = ({ history }) => {
               to="/admin/dashboard"
               style={isActive(history, "/admin/dashboard")}
             >
-              Dashboard <FontAwesomeIcon icon={faChartLine} />
+              <FontAwesomeIcon icon={faChartLine} /> Dashboard
             </Nav.Link>
           )}
 
@@ -63,14 +63,14 @@ const Menu = ({ history }) => {
                 to="/signin"
                 style={isActive(history, "/signin")}
               >
-                Signin  <FontAwesomeIcon icon={faSignInAlt} />
+                <FontAwesomeIcon icon={faSignInAlt} /> Signin  
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/signup"
                 style={isActive(history, "/signup")}
               >
-                Signup <FontAwesomeIcon icon={faUserPlus} />
+                <FontAwesomeIcon icon={faUserPlus} /> Signup 
               </Nav.Link>
             </>
           )}
@@ -87,7 +87,7 @@ const Menu = ({ history }) => {
                   })
                 }
               >
-               Signout  <FontAwesomeIcon icon={faSignOutAlt} />
+                <FontAwesomeIcon icon={faSignOutAlt} /> Signout 
               </Nav.Link>
             </>
           )}

@@ -45,31 +45,32 @@ const Shop = () => {
     });
   };
 
-    //fetch more data
-    const loadMore = () => {
-      let toSkip =  skip + limit;
-      getFilteredProducts(toSkip, limit, myFilters.filters).then((data) => {
-        if (data.error) {
-          setError(data.error);
-        } else {
-          setResult([ ...result ,...data.data]);
-          setSize(data.size);
-          setSkip(toSkip);
-        }
-      });
-    };
-   
-    //laod more btn show
-    const loadMoreButton = () => {
-      console.log(size > 0 && size >= limit )
-       return (
-          size > 0 && size >= limit &&  ( 
-            <button onClick={loadMore} className="btn btn-warning mb-5 ">Lode More</button>
-          )
-       )
-    }
-  
-    
+  //fetch more data
+  const loadMore = () => {
+    let toSkip = skip + limit;
+    getFilteredProducts(toSkip, limit, myFilters.filters).then((data) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setResult([...result, ...data.data]);
+        setSize(data.size);
+        setSkip(toSkip);
+      }
+    });
+  };
+
+  //laod more btn show
+  const loadMoreButton = () => {
+    console.log(size > 0 && size >= limit);
+    return (
+      size > 0 &&
+      size >= limit && (
+        <button onClick={loadMore} className="btn btn-warning mb-5 ">
+          Lode More
+        </button>
+      )
+    );
+  };
 
   //set the filters value to state
   const handleFilters = (filters, filterBy) => {
@@ -126,12 +127,14 @@ const Shop = () => {
               <h2 className="mb-4">Products</h2>
               <Row>
                 {result.map((product, i) => (
-                  <Card key={i} product={product} />
+                  <Col md={6} className="mb-3">
+                    <Card key={i} product={product} />
+                  </Col>
                 ))}
               </Row>
             </Container>
             <hr />
-             {loadMoreButton()}
+            {loadMoreButton()}
           </Col>
         </Row>
       </Container>

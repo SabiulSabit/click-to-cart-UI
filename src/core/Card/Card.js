@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Col } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 import ShowImage from "../ShowImage";
 import moment, { updateLocale } from "moment";
 import { addItem, updateItem, removeItem } from "../cartHelpers";
 
-const Card = ({
+const Card_show = ({
   product,
   viewProductButton = true,
   showAddToCartButton = true,
@@ -74,7 +74,8 @@ const Card = ({
   };
 
   return (
-    <div className="card">
+     
+     <div className="card">
       {shouldRedirect(redirect)}
       <div className="card-header name">{product.name}</div>
       <div className="card-body">
@@ -118,8 +119,9 @@ const Card = ({
 
         {showCartUpdateOptions(cartUpdate)}
       </div>
-    </div>
+    </div> 
+    
   );
 };
 
-export default Card;
+export default Card_show;
