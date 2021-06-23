@@ -4,6 +4,7 @@ import { Col, Card } from "react-bootstrap";
 import ShowImage from "../ShowImage";
 import moment, { updateLocale } from "moment";
 import { addItem, updateItem, removeItem } from "../cartHelpers";
+import './card.css'
 
 const Card_show = ({
   product,
