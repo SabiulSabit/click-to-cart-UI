@@ -5,6 +5,8 @@ import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { createCategory } from "./apiAdmin";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBackward } from '@fortawesome/free-solid-svg-icons'
 
 const AddCategory = () => {
   let [error, setError] = useState(0);
@@ -41,7 +43,7 @@ const AddCategory = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <label htmlFor="name" className="text-muted">
-                Name{" "}
+               <strong>Category Name</strong>
                 <span className="err">
                   {errors.name && "This Fields is Required"}
                 </span>
@@ -49,7 +51,7 @@ const AddCategory = () => {
               <input
                 type="text"
                 id="name"
-                placeholder="Your Name"
+                placeholder="Category Name"
                 className="form-control"
                 {...register("name", { required: true, maxLength: 32 })}
               />
@@ -60,7 +62,7 @@ const AddCategory = () => {
             </button>
           </form>
           <div className="mt-5">
-              <Link to='/admin/dashboard' className="text-warning">Back to Dashboard</Link>
+              <Link to='/admin/dashboard' className="btn btn-outline-warning ">  <FontAwesomeIcon icon={faBackward} /> Back to Dashboard</Link>
       </div>
         </Col>
       </Row>
