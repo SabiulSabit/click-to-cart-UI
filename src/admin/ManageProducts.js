@@ -5,6 +5,8 @@ import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { getProducts, deleteProduct } from "./apiAdmin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -45,27 +47,48 @@ const ManageProducts = () => {
           <Col md={12} className="mb-3">
             <h2 className="text-center">Total Products: {products.length}</h2>
             <hr />
-            <ul className="list-group">
-              {products.map((p, i) => (
-                <li
-                  key={i}
-                  className="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  <strong>{p.name}</strong>
-                  <Link to={`/admin/product/update/${p._id}`}>
-                    <span className="badge badge-warning badge-pill">
-                      Update
-                    </span>
-                  </Link>
-                  <span onClick={ () => removeProduct(p._id) } className="badge badge-danger badge-pill">Delete</span>
-                </li>
-              ))}
-            </ul>
+
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((p, i) => (
+                  <tr key={i}>
+                    <th scope="row">{i}</th>
+                    <td>
+                      <strong>{p.name}</strong>
+                    </td>
+                    <td>
+                      {" "}
+                      <Link to={`/admin/product/update/${p._id}`}>
+                        <span className="badge badge-warning badge-pill">
+                        <FontAwesomeIcon icon={faEdit} /> Update
+                        </span>
+                      </Link>
+                    </td>
+                    <td>
+                      {" "}
+                      <span
+                        onClick={() => removeProduct(p._id)}
+                        className="badge badge-danger badge-pill"
+                      >
+                          <FontAwesomeIcon icon={faTrash} /> Delete
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Col>
         </Row>
       </Container>
 
-      <hr />
     </Layout>
   );
 };

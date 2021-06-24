@@ -59,6 +59,9 @@ h2{
     cursor: pointer;
 }
 
+.badge-danger{
+    cursor: pointer;
+}
 
 
 @-webkit-keyframes Gradient {

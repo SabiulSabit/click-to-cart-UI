@@ -24,7 +24,7 @@ const AddProdcut = () => {
   } = useForm();
 
   const { user, token } = isAuthenticate();
-  const { loading, error, createProductName, redirectToProfile } = values;
+  const { loading, error, createProductName } = values;
 
   //load categories and use it
   useEffect(() => {
