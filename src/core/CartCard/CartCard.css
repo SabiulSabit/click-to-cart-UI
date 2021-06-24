@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.p_cart{
+    font-size: 18px;
+    color: #492540;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "../ShowImage";
 import moment from "moment";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faEye, faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { addItem, updateItem, removeItem } from "../cartHelpers";
-// import './card.css'
+import './CartCard.css'
 
 const CartCard = ({
   product,
@@ -76,64 +76,47 @@ const CartCard = ({
   };
 
   return (
-     
-     <div className="card">
-      {shouldRedirect(redirect)}
-      <div className="card-header cat-name">{product.category && product.category.name}</div>
-      <div className="card-body">
-        {product.quantity > 0 ? (
-          <span className="badge badge-success badge-pill float-right">
-            In Stock
-          </span>
-        ) : (
-          <span className="badge badge-danger badge-pill">Out of Stock</span>
-        )}
+    <div className="card">
+    {shouldRedirect(redirect)}
+    <div className="card-header cat-name">{product.category && product.category.name}</div>
+    <div className="card-body">
 
-        <br />
-        <ShowImage item={product} url="product" />
-          
-        
-        
-        
-        <p className="p_name">
-          {product.name}
-        </p>
-        <p className="price"> &#2547; {product.price} </p>
-        {
-            !viewProductButton &&  (
-              <p className="lead mt-2"> {product.description.substring(0, 50)} </p> 
-            )
-          }
-        <hr />
-        <p className="black-8">
-          Last Update: {moment(product.createdAt).fromNow()}{" "}
-        </p>
+      
+      <span className="p_cart">
+        {product.name}
+      </span>
+      <p className="price"> &#2547; {product.price} </p>
+      {
+          !viewProductButton &&  (
+            <p className="lead mt-2"> {product.description.substring(0, 50)} </p> 
+          )
+        }
+      <hr />
 
 
+      {showAddToCartButton && (
+        <button
+          onClick={addToCart}
+          className="btn btn-outline-warning mt-2 mb-2  ml-2"
+        >
+          Add to Cart <FontAwesomeIcon icon={faCartPlus} />
+        </button>
+      )}
 
-        {showAddToCartButton && (
-          <button
-            onClick={addToCart}
-            className="btn btn-outline-warning mt-2 mb-2  ml-2"
-          >
-            Add to Cart <FontAwesomeIcon icon={faCartPlus} />
+      <Link to={`/product/${product._id}`}>
+        {viewProductButton && (
+          <button className="btn btn-outline-info mt-2 mb-2 ml-2">
+            View Product <FontAwesomeIcon icon={faEye} />
           </button>
         )}
+      </Link>
 
-        <Link to={`/product/${product._id}`}>
-          {viewProductButton && (
-            <button className="btn btn-outline-info mt-2 mb-2 ml-2">
-              View Product <FontAwesomeIcon icon={faEye} />
-            </button>
-          )}
-        </Link>
+      {showRemoveButton(showRemoveProductButton)}
 
-        {showRemoveButton(showRemoveProductButton)}
+      {showCartUpdateOptions(cartUpdate)}
+    </div>
+  </div> 
 
-        {showCartUpdateOptions(cartUpdate)}
-      </div>
-    </div> 
-    
   );
 };
 
