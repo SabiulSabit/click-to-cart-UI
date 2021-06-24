@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getCategorys, getSearchedProducts } from "../apiCore";
 import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Card from "../Card/Card";
-import './Search.css'
+import "./Search.css";
 
 const Search = () => {
   const [data, setData] = useState({
@@ -38,7 +38,7 @@ const Search = () => {
         if (products.error) {
           console.log(products.error);
         } else {
-        // console.log(products)
+          // console.log(products)
           setData({ ...data, result: products, searched: true });
         }
       });
@@ -70,10 +70,12 @@ const Search = () => {
   const showSearchedProduct = (productData = []) => {
     return (
       <Container>
-        <h3 className="mt-4 mb-4 ml-4">{searchMessage(searched, result)}</h3>
+        <h3 className="mt-4 mb-4 ml-4 searchResult">{searchMessage(searched, result)}</h3>
         <Row>
           {productData.map((product, i) => (
-            <Card key={i} product={product} />
+            <Col md={4} className="mb-3">
+              <Card key={i} product={product} />
+            </Col>
           ))}
         </Row>
       </Container>
@@ -96,19 +98,19 @@ const Search = () => {
                 ))}
               </select>
             </div>
-              
+
             <input
               type="search"
               className="form-control"
               onChange={handelChnage("search")}
               placeholder="Search Item"
             />
-          
           </div>
 
           <div className="btn input-group-append" style={{ border: "none" }}>
-            <button className="input-group-text">Search..  <FontAwesomeIcon icon={faSearch} /></button>
-           
+            <button className="input-group-text">
+              Search.. <FontAwesomeIcon icon={faSearch} />
+            </button>
           </div>
         </span>
       </form>

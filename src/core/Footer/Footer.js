@@ -99,8 +99,8 @@ const Footer = () => {
          
         >
           © 2021 Copyright:
-          <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-            MDBootstrap.com
+          <a className="text-reset fw-bold" href="#">
+           Encodemy
           </a>
         </div>
       </footer>
