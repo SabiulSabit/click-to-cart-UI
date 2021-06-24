@@ -42,7 +42,7 @@ const Signup = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <label htmlFor="name" className="text-muted">
-                Name{" "}
+                <strong>Name{" "}</strong>
                 <span className="err">
                   {errors.name && "This Fields is Required"}
                 </span>
@@ -57,7 +57,7 @@ const Signup = () => {
             </div>
             <div className="form-group">
               <label htmlFor="email" className="text-muted">
-                Email{" "}
+                <strong>Email{" "}</strong>
                 <span className="err">
                   {errors.email && "This Fields is Required"}
                 </span>
@@ -65,13 +65,14 @@ const Signup = () => {
               <input
                 type="email"
                 id="email"
+                placeholder="Enter Your Email"
                 className="form-control"
                 {...register("email", { required: true })}
               />
             </div>
             <div className="form-group">
               <label htmlFor="password" className="text-muted">
-                Password{" "}
+                <strong>Password{" "}</strong>
                 <span className="err">
                   {errors.password && "This Fields is Required"}
                 </span>
@@ -79,6 +80,7 @@ const Signup = () => {
               <input
                 type="password"
                 id="password"
+                placeholder="Enter Your Password"
                 className="form-control"
                 {...register("password", { required: true })}
               />

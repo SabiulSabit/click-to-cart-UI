@@ -46,7 +46,7 @@ const Signin = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <label htmlFor="email" className="text-muted">
-                Email{" "}
+                <strong>Email{" "}</strong>
                 <span className="err">
                   {errors.email && "This Fields is Required"}
                 </span>
@@ -60,7 +60,7 @@ const Signin = () => {
             </div>
             <div className="form-group">
               <label htmlFor="password" className="text-muted">
-                Password{" "}
+                <strong>Password{" "}</strong> 
                 <span className="err">
                   {errors.password && "This Fields is Required"}
                 </span>
