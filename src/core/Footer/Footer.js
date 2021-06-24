@@ -99,7 +99,7 @@ const Footer = () => {
          
         >
           © 2021 Copyright:
-          <a className="text-reset fw-bold" href="#">
+          <a className="text-reset fw-bold" href="https://encodemy.com/">
            Encodemy
           </a>
         </div>
