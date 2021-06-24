@@ -24,7 +24,7 @@ p{
 .price{
     font-size: 22px;
     font-weight: 600;
-    margin-left: 5%;
+    margin-left: auto;
 }
 
 .btn-outline-warning{

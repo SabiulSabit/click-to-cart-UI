@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import ShowImage from "../ShowImage";
-import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faCartPlus } from "@fortawesome/free-solid-svg-icons";
-import { addItem, updateItem, removeItem } from "../cartHelpers";
-import './CartCard.css'
+import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { updateItem, removeItem } from "../cartHelpers";
+import "./CartCard.css";
 
 const CartCard = ({
   product,
   viewProductButton = true,
-  showAddToCartButton = true,
   cartUpdate = false,
   showRemoveProductButton = false,
   setRun = (f) => f,
@@ -18,12 +15,6 @@ const CartCard = ({
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-
-  const addToCart = () => {
-    addItem(product, () => {
-      setRedirect(true);
-    });
-  };
 
   const shouldRedirect = (redirect) => {
     if (redirect) {
@@ -48,6 +39,7 @@ const CartCard = ({
               <span className="input-group-text">Adjust Quantity</span>
             </div>
             <input
+              id="adjust"
               type="number"
               className="form-control"
               value={count}
@@ -69,7 +61,7 @@ const CartCard = ({
           }}
           className="btn btn-outline-danger mt-2 mb-2 ml-2"
         >
-          Remove Product{" "}
+          <FontAwesomeIcon icon={faTrash} />
         </button>
       )
     );
@@ -77,46 +69,36 @@ const CartCard = ({
 
   return (
     <div className="card">
-    {shouldRedirect(redirect)}
-    <div className="card-header cat-name">{product.category && product.category.name}</div>
-    <div className="card-body">
-
-      
-      <span className="p_cart">
-        {product.name}
-      </span>
-      <p className="price"> &#2547; {product.price} </p>
-      {
-          !viewProductButton &&  (
-            <p className="lead mt-2"> {product.description.substring(0, 50)} </p> 
-          )
-        }
-      <hr />
-
-
-      {showAddToCartButton && (
-        <button
-          onClick={addToCart}
-          className="btn btn-outline-warning mt-2 mb-2  ml-2"
-        >
-          Add to Cart <FontAwesomeIcon icon={faCartPlus} />
-        </button>
-      )}
-
-      <Link to={`/product/${product._id}`}>
-        {viewProductButton && (
-          <button className="btn btn-outline-info mt-2 mb-2 ml-2">
-            View Product <FontAwesomeIcon icon={faEye} />
-          </button>
+      {shouldRedirect(redirect)}
+      <div className="card-header cat-name">
+        {product.category && product.category.name}
+      </div>
+      <div className="card-body">
+        <span className="p_cart">{product.name}</span>
+        <span className="float-right price_cart">
+          {" "}
+          &#2547; {product.price}{" "}
+        </span>
+        {!viewProductButton && (
+          <p className="lead mt-2"> {product.description.substring(0, 50)} </p>
         )}
-      </Link>
+        <hr />
 
-      {showRemoveButton(showRemoveProductButton)}
+        <div className="float-right">
+          <Link to={`/product/${product._id}`}>
+            {viewProductButton && (
+              <button className="btn btn-outline-info mt-2 mb-2 ml-2">
+                View Product <FontAwesomeIcon icon={faEye} />
+              </button>
+            )}
+          </Link>
 
-      {showCartUpdateOptions(cartUpdate)}
+          {showRemoveButton(showRemoveProductButton)}
+        </div>
+
+        {showCartUpdateOptions(cartUpdate)}
+      </div>
     </div>
-  </div> 
-
   );
 };
 

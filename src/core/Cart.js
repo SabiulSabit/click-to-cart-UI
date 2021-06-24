@@ -24,7 +24,6 @@ const Cart = () => {
                     <CartCard
                         key={i}
                         product={product}
-                        showAddToCartButton={false}
                         cartUpdate={true}
                         showRemoveProductButton={true}
                         setRun={setRun}
@@ -36,7 +35,7 @@ const Cart = () => {
     };
 
     const noItemsMessage = () => (
-        <h2>
+        <h2 id="darkBlue">
             Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
         </h2>
     );
@@ -51,7 +50,7 @@ const Cart = () => {
                 <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 
                 <div className="col-6">
-                    <h2 className="mb-4">Your cart summary</h2>
+                    <h2 className="mb-4">Select Your Payment Method</h2>
                     <hr />
                     <Checkout products={items} setRun={setRun} run={run} />
                 </div>
