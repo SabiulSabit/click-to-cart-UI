@@ -36,6 +36,10 @@ h2{
 }
 
 
+.priceValue{
+    color: tomato;
+}
+
 .jumbotron {
     width: 30wh;
     height: 30vh;
@@ -45,6 +49,14 @@ h2{
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
+}
+/* 
+.list-group .bg-secondary :hover{
+    background-color: #575151;
+} */
+
+.list-group{
+    cursor: pointer;
 }
 
 

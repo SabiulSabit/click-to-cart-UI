@@ -44,10 +44,10 @@ const AdminDashboard = () => {
       <div className="card dashBoardCard mb-5">
         <h3 className="card-header">Admin Information</h3>
         <ul className="list-group">
-          <li className="list-group-item">{name}</li>
-          <li className="list-group-item">{email}</li>
+          <li className="list-group-item"><strong>Name: </strong> {name}</li>
+          <li className="list-group-item"><strong>Email: </strong> {email}</li>
           <li className="list-group-item">
-            {role === 1 ? "Admin" : "Registred User"}
+          <strong>User Type: </strong> {role === 1 ? "Admin" : "Registred User"}
           </li>
         </ul>
       </div>

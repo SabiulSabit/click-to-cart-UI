@@ -75,7 +75,7 @@ const CartCard = ({
       </div>
       <div className="card-body">
         <span className="p_cart">{product.name}</span>
-        <span className="float-right price_cart">
+        <span className="float-right price_cart priceValue">
           {" "}
           &#2547; {product.price}{" "}
         </span>
