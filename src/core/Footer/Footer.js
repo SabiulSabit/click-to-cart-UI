@@ -6,10 +6,11 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div>
+    <div className="footerDiv">
+      <hr />
       <footer className="text-lg-start text-muted footer">
         
-        <h3 className="text-left">Encodemy</h3>
+        <h3 className="text-left ml-5">Encodemy</h3>
 
         <section className="">
           <div className="container text-center text-md-start mt-5">
