@@ -19,7 +19,7 @@ const Menu = ({ history }) => {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand as={Link} to="/">Encodemy</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="brandName">Click To Cart</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link
             as={Link}
