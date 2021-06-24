@@ -36,7 +36,7 @@ h2{
 }
 
 
-.priceValue{
+.priceValue, .orderId{
     color: tomato;
 }
 

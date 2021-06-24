@@ -41,10 +41,10 @@ const Orders = () => {
   const showTotalOrder = () => {
     if (orders.length) {
       return (
-        <h1 className="text-danger display-2">Total orders: {orders.length}</h1>
+        <h2 className="text-danger">Total orders: {orders.length}</h2>
       );
     } else {
-      return <h1 className="text-danger">No orders</h1>;
+      return <h2 className="text-danger">No orders</h2>;
     }
   };
 
@@ -52,7 +52,7 @@ const Orders = () => {
     return (
       <div className="input-group mb-2 mr-2 mr-sm-2">
         <div className="input-group-prepend">
-          <div className="input-group-text">{key}</div>
+          <div className="input-group-text"> <strong>{key}</strong> </div>
         </div>
         <input type="text" value={value} className="form-control" readOnly />
       </div>
@@ -86,9 +86,16 @@ const Orders = () => {
 
   return (
     <Layout title="All Orders" description="E-Commerce Website">
-      {showTotalOrder()}
+      <Container>
+        <Row>
+          <Col>
+          {showTotalOrder()}
+          </Col>
+        </Row>
+      </Container>
+     
       {orders.map((order, orderIndex) => {
-        console.log(order)
+       // console.log(order)
         return (
           <Container>
             <Row>
@@ -96,28 +103,28 @@ const Orders = () => {
                 <div
                   className="mt-5"
                   key={orderIndex}
-                  style={{ borderBottom: "5px solid indigo" }}
+                  
                 >
                   <h2 className="mb-5">
                     {" "}
-                    <span className="bg-primary">
-                      Order ID: {order._id}
+                    <span >
+                      Order ID:  <span className="orderId">{order._id}</span> 
                     </span>{" "}
                   </h2>
                   <ul className="list-group mb-2">
                     <li className="list-group-item">{showStatus(order)}</li>
                     <li className="list-group-item">
-                      Transaction ID: {order.transaction_id}
+                      <strong>Transaction ID: </strong>  {order.transaction_id}
                     </li>
-                    <li className="list-group-item">Amount: ${order.amount}</li>
+                    <li className="list-group-item"><strong> Amount: </strong>&#2547; {order.amount}</li>
                     <li className="list-group-item">
-                      Order By: {order.user.name}
-                    </li>
-                    <li className="list-group-item">
-                      Order Placed: {moment(order.createdAt).fromNow()}
+                    <strong> Order By:  </strong> {order.user.name}
                     </li>
                     <li className="list-group-item">
-                      Delivery Address: {order.address}
+                    <strong>Order Placed:  </strong> {moment(order.createdAt).fromNow()}
+                    </li>
+                    <li className="list-group-item">
+                    <strong> Delivery Address:  </strong>{order.address}
                     </li>
                   </ul>
                   <h3 className="mt-4 mb-4">
