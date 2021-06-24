@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Col } from "react-bootstrap";
 import ShowImage from "../ShowImage";
-import moment, { updateLocale } from "moment";
+import moment from "moment";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  faEye, faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { addItem, updateItem, removeItem } from "../cartHelpers";
 import './card.css'
 
@@ -81,7 +82,7 @@ const Card = ({
       <div className="card-header cat-name">{product.category && product.category.name}</div>
       <div className="card-body">
         {product.quantity > 0 ? (
-          <span className="badge badge-primary badge-pill float-right">
+          <span className="badge badge-success badge-pill float-right">
             In Stock
           </span>
         ) : (
@@ -92,10 +93,11 @@ const Card = ({
         <ShowImage item={product} url="product" />
         {/* <p className="lead mt-2"> {product.description.substring(0, 50)} </p> */}
         
-        <p className="black-9">
-          Product Name: {product.name}
+        <p className="p_name">
+          {product.name}
         </p>
-        <p className="black-10"> $ {product.price} </p>
+        <p className="price"> &#2547; {product.price} </p>
+        <hr />
         <p className="black-8">
           Added on: {moment(product.createdAt).fromNow()}{" "}
         </p>
@@ -105,14 +107,14 @@ const Card = ({
             onClick={addToCart}
             className="btn btn-outline-warning mt-2 mb-2  "
           >
-            Add to Cart
+            Add to Cart <FontAwesomeIcon icon={faCartPlus} />
           </button>
         )}
 
         <Link to={`/product/${product._id}`}>
           {viewProductButton && (
-            <button className="btn btn-outline-primary mt-2 mb-2 ml-2">
-              View Product{" "}
+            <button className="btn btn-outline-info mt-2 mb-2 ml-2">
+              View Product <FontAwesomeIcon icon={faEye} />
             </button>
           )}
         </Link>

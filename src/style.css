@@ -10,7 +10,7 @@ h2{
 
 
 .btn, .jumbotron, .nav :hover{
-    border-radius: 0px;
+    border-radius: 5px;
 } 
 
 .dashBoardCard{
@@ -86,24 +86,6 @@ h2{
 }
 
 
-.black-10{
-    background: #f2f2f2;
-}
-.black-9{
-    background: #e6e6e6;
-}
-.black-8{
-    background: #d9d9d9;
-}
-.black-7{
-    background: #cccccc;
-}
-.black-6{
-    background: #bfbfbf;
-}
-.black-5{
-    background: #b3b3b3;
-}
 
 .cart-badge, .cart-badge:hover{
 border-radius: 50%;

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 p{
     font-family: 'Benne', serif;
@@ -8,4 +10,28 @@ p{
     background-color: #364f6b;
     color: white;
     font-weight: bold;
+}
+
+.p_name{
+    /* font-weight: 800; */
+    font-size: 18px;
+    color: #492540;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.price{
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 5%;
+}
+
+.btn-outline-warning{
+    color: #CB3B3B;
+    border-color: #CB3B3B;;
+}
+.btn-outline-warning:hover{
+    color: white;
+    background-color: #CB3B3B;;
 }
