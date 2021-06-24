@@ -104,9 +104,9 @@ const Shop = () => {
       description="E-Commerce Website"
       className="container-fluid"
     >
-      <Container>
+      <Container fluid>
         <Row>
-          <Col md={4}>
+          <Col md={3} className="pl-5">
             <h4>Filter by Categories</h4>
             <ul>
               <Checkbox
@@ -122,12 +122,12 @@ const Shop = () => {
               />
             </div>
           </Col>
-          <Col md={8}>
+          <Col md={9}>
             <Container>
               <h2 className="mb-4">Products</h2>
               <Row>
                 {result.map((product, i) => (
-                  <Col md={6} className="mb-3">
+                  <Col md={4} className="mb-3">
                     <Card key={i} product={product} />
                   </Col>
                 ))}

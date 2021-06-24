@@ -10,7 +10,10 @@
 
 .input-group-prepend{
     border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
+
 .input-group-prepend select{
    border-radius: 10px;
 }
