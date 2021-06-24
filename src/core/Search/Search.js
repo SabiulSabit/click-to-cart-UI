@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { getCategorys, getSearchedProducts } from "./apiCore";
+import { getCategorys, getSearchedProducts } from "../apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import Card from "./Card/Card";
+import Card from "../Card/Card";
+import './Search.css'
 
 const Search = () => {
   const [data, setData] = useState({

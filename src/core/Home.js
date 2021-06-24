@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import { getProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card/Card";
-import Search from "./Search";
+import Search from "./Search/Search";
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([]);

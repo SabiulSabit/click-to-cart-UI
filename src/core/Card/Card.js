@@ -67,7 +67,7 @@ const Card = ({
             removeItem(product._id);
             setRun(!run);
           }}
-          className="btn btn-outline-danger mt-2 mb-2"
+          className="btn btn-outline-danger mt-2 mb-2 ml-2"
         >
           Remove Product{" "}
         </button>
@@ -91,21 +91,30 @@ const Card = ({
 
         <br />
         <ShowImage item={product} url="product" />
-        {/* <p className="lead mt-2"> {product.description.substring(0, 50)} </p> */}
+          
+        
+        
         
         <p className="p_name">
           {product.name}
         </p>
         <p className="price"> &#2547; {product.price} </p>
+        {
+            !viewProductButton &&  (
+              <p className="lead mt-2"> {product.description.substring(0, 50)} </p> 
+            )
+          }
         <hr />
         <p className="black-8">
-          Added on: {moment(product.createdAt).fromNow()}{" "}
+          Last Update: {moment(product.createdAt).fromNow()}{" "}
         </p>
+
+
 
         {showAddToCartButton && (
           <button
             onClick={addToCart}
-            className="btn btn-outline-warning mt-2 mb-2  "
+            className="btn btn-outline-warning mt-2 mb-2  ml-2"
           >
             Add to Cart <FontAwesomeIcon icon={faCartPlus} />
           </button>
