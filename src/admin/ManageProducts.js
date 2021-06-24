@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
@@ -67,7 +66,7 @@ const ManageProducts = () => {
                     <td>
                       {" "}
                       <Link to={`/admin/product/update/${p._id}`}>
-                        <span className="badge badge-warning badge-pill">
+                        <span className="badge badge-info badge-pill">
                         <FontAwesomeIcon icon={faEdit} /> Update
                         </span>
                       </Link>

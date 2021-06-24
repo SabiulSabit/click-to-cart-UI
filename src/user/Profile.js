@@ -3,7 +3,7 @@ import Layout from "../core/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { getUserInfo, upadetUserInfo, updateLocalStorageUser } from "./apiUser";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Profile = (props) => {
   const [values, setValues] = useState({
@@ -58,9 +58,10 @@ const Profile = (props) => {
       <Container>
         <Row>
           <Col md={12}>
+          <h2 className="mb-4">Profile Update</h2> 
             <form>
               <div className="form-group">
-                <label className="text-muted">Name</label>
+                <label className="text-muted"><strong>Name</strong> </label>
                 <input
                   type="text"
                   onChange={handelChnage("name")}
@@ -69,7 +70,7 @@ const Profile = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label className="text-muted">Password</label>
+                <label className="text-muted"><strong>Password</strong></label>
                 <input
                   type="text"
                   onChange={handelChnage("password")}
@@ -78,8 +79,8 @@ const Profile = (props) => {
                 />
               </div>
 
-              <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
+              <button onClick={clickSubmit} className="btn btn-info">
+                Update
               </button>
             </form>
           </Col>
@@ -90,7 +91,7 @@ const Profile = (props) => {
 
   return (
     <Layout title="Update Profile" description="E-Commerce Website">
-      <h2 className="mb-4">Profile Update</h2>
+    
       {profileUpdate(name, password)}
       {redirectUser(success)}
     </Layout>
