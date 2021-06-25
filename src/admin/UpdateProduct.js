@@ -131,7 +131,7 @@ const UpdateProdcut = ({match}) => {
             id="description"
             placeholder="Product Description"
             className="form-control"
-            {...register("description", { maxLength: 100 })}
+            {...register("description", { maxLength: 2000 })}
           />
         </div>
         <div className="form-group">

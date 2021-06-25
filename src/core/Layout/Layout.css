@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
 
 
+
 .layoutH2{
     color: #473889;
     border: none;
     font-weight: 700;
     font-family: 'Viaoda Libre', cursive;
   }
+
 
 .descriptionP{
     /* padding-left: 25%; */

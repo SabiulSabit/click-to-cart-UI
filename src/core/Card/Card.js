@@ -101,7 +101,7 @@ const Card = ({
         <p className="price"> &#2547; {product.price} </p>
         {
             !viewProductButton &&  (
-              <p className="lead mt-2"> {product.description.substring(0, 50)} </p> 
+              <p className="lead mt-2"> {product.description.substring(0, 500)} </p> 
             )
           }
         <hr />

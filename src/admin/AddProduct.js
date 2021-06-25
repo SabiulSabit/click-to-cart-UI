@@ -111,7 +111,7 @@ const AddProdcut = () => {
             id="description"
             placeholder="Product Description"
             className="form-control"
-            {...register("description", { required: true, maxLength: 100 })}
+            {...register("description", { required: true, maxLength: 2000 })}
           />
         </div>
         <div className="form-group">

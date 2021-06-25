@@ -17,7 +17,7 @@ import "./Menu.css";
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: "#feb062" };
+    return { color: "#ff5959" };
   } else {
     return { color: "#364f6b" };
   }
@@ -25,8 +25,8 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => {
   return (
-    <div>
-      <Navbar>
+    <div  className="navbar_nav">
+      <Navbar >
         <Navbar.Brand as={Link} to="/" className="brandName">
           Click To Cart
         </Navbar.Brand>
