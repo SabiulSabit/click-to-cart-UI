@@ -74,7 +74,7 @@ const AddProdcut = () => {
     return (
       <form ref={form} className="mb-3" onSubmit={handleSubmit(onSubmit)}>
         <h4>Post Photo</h4>{" "}
-        <span className="err">{errors.photo && "This Fields is Required"}</span>
+        <span className="err">{errors.photo && "This Field is Required"}</span>
         <div className="form-group">
           <label className="btn btn-secondary">
             <input
@@ -88,7 +88,7 @@ const AddProdcut = () => {
           <label htmlFor="name" className="text-muted">
             Name{" "}
             <span className="err">
-              {errors.name && "This Fields is Required"}
+              {errors.name && "This Field is Required"}
             </span>
           </label>
           <input
@@ -103,7 +103,7 @@ const AddProdcut = () => {
           <label htmlFor="description" className="text-muted">
             Description{" "}
             <span className="err">
-              {errors.description && "This Fields is Required"}
+              {errors.description && "This Field is Required"}
             </span>
           </label>
           <textarea
@@ -118,7 +118,7 @@ const AddProdcut = () => {
           <label htmlFor="price" className="text-muted">
             Price{" "}
             <span className="err">
-              {errors.price && "This Fields is Required"}
+              {errors.price && "This Field is Required"}
             </span>
           </label>
           <input
@@ -133,7 +133,7 @@ const AddProdcut = () => {
           <label htmlFor="category" className="text-muted">
             Category{" "}
             <span className="err">
-              {errors.category && "This Fields is Required"}
+              {errors.category && "This Field is Required"}
             </span>
           </label>
           <select
@@ -156,7 +156,7 @@ const AddProdcut = () => {
           <label htmlFor="shipping" className="text-muted">
             Shipping{" "}
             <span className="err">
-              {errors.shipping && "This Fields is Required"}
+              {errors.shipping && "This Field is Required"}
             </span>
           </label>
           <select
@@ -175,7 +175,7 @@ const AddProdcut = () => {
           <label htmlFor="quantity" className="text-muted">
             Quantity{" "}
             <span className="err">
-              {errors.quantity && "This Fields is Required"}
+              {errors.quantity && "This Field is Required"}
             </span>
           </label>
           <input

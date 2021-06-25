@@ -44,7 +44,7 @@ const Signup = () => {
               <label htmlFor="name" className="text-muted">
                 <strong>Name{" "}</strong>
                 <span className="err">
-                  {errors.name && "This Fields is Required"}
+                  {errors.name && "This Field is Required"}
                 </span>
               </label>
               <input
@@ -59,7 +59,7 @@ const Signup = () => {
               <label htmlFor="email" className="text-muted">
                 <strong>Email{" "}</strong>
                 <span className="err">
-                  {errors.email && "This Fields is Required"}
+                  {errors.email && "This Field is Required"}
                 </span>
               </label>
               <input

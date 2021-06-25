@@ -45,7 +45,7 @@ const AddCategory = () => {
               <label htmlFor="name" className="text-muted">
                <strong>Category Name</strong>
                 <span className="err">
-                  {errors.name && "This Fields is Required"}
+                  {errors.name && "This Field is Required"}
                 </span>
               </label>
               <input
