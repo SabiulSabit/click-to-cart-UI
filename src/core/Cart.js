@@ -13,11 +13,18 @@ const Cart = () => {
     useEffect(() => {
         setItems(getCart());
     }, [run]);
+   
+    const getTotal = () => {
+        return items.reduce((currentvalue, nextValue) => {
+          return currentvalue + nextValue.count * nextValue.price;
+        }, 0);
+      };
 
     const showItems = items => {
         return (
             <div>
                 <h2>Your cart has {`${items.length}`} items</h2>
+                <h2 className="">Total:  <span className="priceValue"> &#2547; {getTotal()} </span></h2>
                 {/* <hr /> */}
    
                 {items.map((product, i) => (

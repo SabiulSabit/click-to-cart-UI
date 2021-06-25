@@ -167,7 +167,6 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
 
   return (
     <div>
-      <h2>Total:  <span className="priceValue"> &#2547; {getTotal()} </span></h2>
       {showError(data.error)}
       {showSucess(data.success)}
       {showLoading(data.loading)}
