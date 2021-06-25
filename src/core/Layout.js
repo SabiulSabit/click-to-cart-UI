@@ -1,8 +1,9 @@
 import React from "react";
 import Menu from "./Menu/Menu";
 import Footer from "./Footer/Footer";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style.css'
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../style.css";
 
 const Layout = ({
   title = "Title",
@@ -14,13 +15,51 @@ const Layout = ({
     <div>
       <Menu />
       <div className="jumbotron">
-        <h2>{title}</h2>
-        <p className="lead">{description}</p>
+        {/* <img src="https://picsum.photos/id/237/320/240" alt="" /> */}
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=First slide&bg=373940"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Second slide&bg=282c34"
+              alt="Second slide"
+            />
+
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="holder.js/800x400?text=Third slide&bg=20232a"
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+        {/* <h2>{title}</h2>
+        <p className="lead">{description}</p> */}
       </div>
 
-      <div className={className}>
-            {children}
-      </div>
+      <div className={className}>{children}</div>
 
       <Footer />
     </div>
