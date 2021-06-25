@@ -21,7 +21,7 @@ const Layout = ({
   return (
     <div>
       <Menu />
-      <Container fluid>
+      <Container fluid className="mb-5">
        <Row>
          <Col md={6} className="mt-5">
          <h2 className="layoutH2 text-center">{title}</h2>

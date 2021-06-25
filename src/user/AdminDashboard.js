@@ -55,7 +55,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Layout title="Admin Dashboard" description="Admin Dashboard">
+    <Layout title="Admin Dashboard" description="Admin Dashboard" src="/images/dashBoard.png">
       <Container>
             <Row>
                 <Col md={3}>

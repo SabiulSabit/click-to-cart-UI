@@ -85,7 +85,7 @@ const Orders = () => {
   };
 
   return (
-    <Layout title="All Orders" description="E-Commerce Website">
+    <Layout title="All Orders" description="E-Commerce Website" src="/images/checklist.png">
       <Container fluid>
         <Row>
           <Col>

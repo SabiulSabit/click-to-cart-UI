@@ -214,7 +214,7 @@ const AddProdcut = () => {
 
 
   return (
-    <Layout title="Add New Product" description="E-Commerce Website">
+    <Layout title="Add New Product" description="E-Commerce Website" src="/images/product.png">
       <Container>
         <Row>
           <Col md={8} className="offset-2">

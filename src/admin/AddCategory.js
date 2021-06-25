@@ -84,7 +84,7 @@ const AddCategory = () => {
 
 
   return (
-    <Layout title="Add New Category" description="E-Commerce Website">
+    <Layout title="Add New Category" description="E-Commerce Website" src="/images/options.png">
       {showError()}
       {showSuccess()}
       {newCategoryForm()}
