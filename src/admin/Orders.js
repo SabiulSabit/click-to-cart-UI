@@ -86,7 +86,7 @@ const Orders = () => {
 
   return (
     <Layout title="All Orders" description="E-Commerce Website">
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
           {showTotalOrder()}
@@ -97,9 +97,9 @@ const Orders = () => {
       {orders.map((order, orderIndex) => {
        // console.log(order)
         return (
-          <Container>
+          <Container fluid>
             <Row>
-              <Col md={12}>
+              <Col md={6}>
                 <div
                   className="mt-5"
                   key={orderIndex}
@@ -127,7 +127,11 @@ const Orders = () => {
                     <strong> Delivery Address:  </strong>{order.address}
                     </li>
                   </ul>
-                  <h3 className="mt-4 mb-4">
+ 
+                </div>
+              </Col>
+              <Col md={6} className="mt-5">
+              <h3 className="mt-4 mb-4">
                     Total products in the order : {order.products.length}
                   </h3>
 
@@ -143,7 +147,6 @@ const Orders = () => {
                       {showProductDetails("Product ID", product._id)}
                     </div>
                   ))}
-                </div>
               </Col>
             </Row>
           </Container>
