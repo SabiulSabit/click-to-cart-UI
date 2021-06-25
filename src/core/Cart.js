@@ -52,17 +52,10 @@ const Cart = () => {
         <Layout
             title="Cart"
             description="Manage your cart items."
+            src="/images/trolley.png"
             className="container-fluid"
         >  
-        <Container fluid>
-            <Row>
-                <Col md={6}> 
-                </Col>
-                <Col md={6}> 
-                  <img src="/images/shopping-cart.png" />
-                </Col>
-            </Row>
-        </Container>
+
             <div className="row">
                 <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 

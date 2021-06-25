@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../style.css";
+import "./Layout.css";
+
 
 
 
@@ -12,6 +14,7 @@ import "../../style.css";
 const Layout = ({
   title = "Title",
   description = "Description",
+  src="",
   children,
   className,
 }) => {
@@ -20,12 +23,12 @@ const Layout = ({
       <Menu />
       <Container fluid>
        <Row>
-         <Col md={6} className="text-center mt-5">
-         <h2 className="layoutH2">{title}</h2>
-        <p className="lead">{description}</p>
+         <Col md={6} className="mt-5">
+         <h2 className="layoutH2 text-center">{title}</h2>
+        <p className="descriptionP">{description}</p>
          </Col>
          <Col md={6} className="text-center">
-           <img src="/images/shopping-basket.png" />
+           <img src={src} />
          </Col>
     
        </Row>

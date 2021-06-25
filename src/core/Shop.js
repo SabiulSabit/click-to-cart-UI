@@ -102,6 +102,7 @@ const Shop = () => {
     <Layout
       title="Shop"
       description="E-Commerce Website"
+      src="/images/supermarket.png"
       className="container-fluid"
     >
       <Container fluid>
