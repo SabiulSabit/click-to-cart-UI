@@ -4,6 +4,9 @@ import Footer from "./Footer/Footer";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style.css";
+// import logo from '../assets/images/home-2-3.jpg'
+
+
 
 const Layout = ({
   title = "Title",
@@ -20,7 +23,7 @@ const Layout = ({
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="holder.js/800x400?text=First slide&bg=373940"
+              src="/images/home-2-3.jpg"  
               alt="First slide"
             />
             <Carousel.Caption>
@@ -31,7 +34,7 @@ const Layout = ({
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="holder.js/800x400?text=Second slide&bg=282c34"
+              src="/images/home-2-4.jpg"
               alt="Second slide"
             />
 
@@ -43,7 +46,7 @@ const Layout = ({
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="holder.js/800x400?text=Third slide&bg=20232a"
+              src="/images/home-banner-1.png"
               alt="Third slide"
             />
 
