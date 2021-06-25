@@ -11,14 +11,14 @@ const isActive = (history, path) => {
   if (history.location.pathname === path) {
     return { color: "#feb062" };
   } else {
-    return { color: "white" };
+    return { color: "#364f6b" };
   }
 };
 
 const Menu = ({ history }) => {
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar>
         <Navbar.Brand as={Link} to="/" className="brandName">Click To Cart</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link
@@ -80,7 +80,7 @@ const Menu = ({ history }) => {
               <Nav.Link
                 as={Link}
                 to="/"
-                style={{ cursor: "pointer", color: "white" }}
+                style={{ cursor: "pointer", color: "#364f6b" }}
                 onClick={() =>
                   signout(() => {
                     history.push("/");

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
+import { Container, Row, Col } from "react-bootstrap";
 import { getCart } from './cartHelpers';
 import CartCard from './CartCard/CartCard';
 import Checkout from './Checkout';
@@ -52,7 +53,16 @@ const Cart = () => {
             title="Cart"
             description="Manage your cart items."
             className="container-fluid"
-        >
+        >  
+        <Container fluid>
+            <Row>
+                <Col md={6}> 
+                </Col>
+                <Col md={6}> 
+                  <img src="/images/shopping-cart.png" />
+                </Col>
+            </Row>
+        </Container>
             <div className="row">
                 <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 

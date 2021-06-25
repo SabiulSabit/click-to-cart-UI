@@ -1,57 +1,61 @@
-body{
-    background-color: whitesmoke;
+body {
+  background-color: whitesmoke;
 }
 
-h2{
-    font-family: 'Ubuntu', sans-serif;
-    color: #002651;
-    border-bottom: 1px solid #002651;
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  color: #002651;
+  border-bottom: 1px solid #002651;
+}
+.layoutH2{
+  color: red;
+  border: none;
 }
 
-
-.btn, .jumbotron, .nav :hover{
-    border-radius: 5px;
-} 
-
-.dashBoardCard{
-    background-color: #feb062;
-}
-.sideBarLink{
-    color: whitesmoke;
-    font-size: 18px;
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 5px;
 }
 
-.sideBarLink:hover{
-    text-decoration: none;
-    color: whitesmoke;
+.dashBoardCard {
+  background-color: #feb062;
+}
+.sideBarLink {
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+.sideBarLink:hover {
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 /* Image card */
-.product-img img{
-    /* min-height: 100px; */
-    width:100%;
-    height: 250px
-    /* max-width: 100%;
+.product-img img {
+  /* min-height: 100px; */
+  width: 100%;
+  height: 250px;
+  /* max-width: 100%;
     max-height: 100%; */
 }
 
-
-.priceValue, .orderId{
-    color: tomato;
+.priceValue,
+.orderId {
+  color: tomato;
 }
 
-.err{
-    font-size: 14px;
-    color: #ff304f;
+.err {
+  font-size: 14px;
+  color: #ff304f;
 }
 
 .jumbotron {
-    width: 30wh;
-    height: 30vh;
-    color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-  
+  width: 30wh;
+  height: 30vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
 }
 
 /* .jumbotron {
@@ -71,22 +75,27 @@ h2{
     background-color: #575151;
 } */
 
-.list-group{
-    cursor: pointer;
+.list-group {
+  cursor: pointer;
 }
 
-.badge-danger{
-    cursor: pointer;
+.badge-danger {
+  cursor: pointer;
 }
 
+.d-block .w-100 {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
 
-
-
-.cart-badge, .cart-badge:hover{
-border-radius: 50%;
-padding: 2px;
-font-size: 12px;
-font-style: italic;
-color: white;
-background: black;
+.cart-badge,
+.cart-badge:hover {
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 12px;
+  font-style: italic;
+  color: white;
+  background: black;
 }

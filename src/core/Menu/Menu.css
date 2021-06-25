@@ -4,13 +4,13 @@
 .brandName{
     font-size: 32px !important;
     font-family: 'Lobster', cursive;
-    color: #dee1ec;
+    color: #be6a15 !important;
     margin-left: 5%;
 }
 
 .bg{
-    background-color: #20232A;
-    color: #20232A;
+    /* background-color: #20232A; */
+    /* color: #20232A; */
 }
 
 .nav-link:hover{
