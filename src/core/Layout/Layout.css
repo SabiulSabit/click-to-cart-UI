@@ -9,9 +9,15 @@
     font-family: 'Viaoda Libre', cursive;
   }
 
+  .coverImage{
+    width: 100%;
+    height: 350;
+    /* background-image: url('../../public/images/cover_1.webp'); */
+  }
+
 
 .descriptionP{
-    /* padding-left: 25%; */
+    padding-left: 30%;
   
     font-weight: 550;
     color: #5d5d5a;

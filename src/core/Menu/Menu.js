@@ -14,31 +14,33 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Menu.css";
-
+//364f6b 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
     return { color: "#ff5959" };
   } else {
-    return { color: "#364f6b" };
+    return { color: "white" };
   }
 };
 
 const Menu = ({ history }) => {
   return (
     <div  className="navbar_nav">
-      <Navbar >
+      <Navbar expand="lg" >
         <Navbar.Brand as={Link} to="/" className="brandName">
           Click To Cart
         </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Link as={Link} to="/" style={isActive(history, "/")}>
-            <FontAwesomeIcon icon={faHome} /> Home
+            <FontAwesomeIcon icon={faHome} /> <span className="navItem">Home</span> 
           </Nav.Link>
           <Nav.Link as={Link} to="/shop" style={isActive(history, "/shop")}>
-            <FontAwesomeIcon icon={faStore} /> Shop
+            <FontAwesomeIcon icon={faStore} /><span className="navItem">  Shop </span>
           </Nav.Link>
           <Nav.Link as={Link} to="/cart" style={isActive(history, "/cart")}>
-            <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup> Cart
+            <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup> <span className="navItem">Cart </span>
           </Nav.Link>
 
           {isAuthenticate() && isAuthenticate().user.role === 0 && (
@@ -48,7 +50,7 @@ const Menu = ({ history }) => {
               style={isActive(history, "/user/dashboard")}
             >
               <FontAwesomeIcon icon={faChartLine} />
-              Dashboard
+              <span className="navItem"> Dashboard</span> 
             </Nav.Link>
           )}
 
@@ -58,7 +60,7 @@ const Menu = ({ history }) => {
               to="/admin/dashboard"
               style={isActive(history, "/admin/dashboard")}
             >
-              <FontAwesomeIcon icon={faChartLine} /> Dashboard
+              <FontAwesomeIcon icon={faChartLine} />  <span className="navItem"> Dashboard</span> 
             </Nav.Link>
           )}
 
@@ -69,14 +71,14 @@ const Menu = ({ history }) => {
                 to="/signin"
                 style={isActive(history, "/signin")}
               >
-                <FontAwesomeIcon icon={faSignInAlt} /> Signin
+                <FontAwesomeIcon icon={faSignInAlt} />  <span className="navItem"> Signin</span> 
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/signup"
                 style={isActive(history, "/signup")}
               >
-                <FontAwesomeIcon icon={faUserPlus} /> Signup
+                <FontAwesomeIcon icon={faUserPlus} />  <span className="navItem"> Signup</span> 
               </Nav.Link>
             </>
           )}
@@ -86,18 +88,19 @@ const Menu = ({ history }) => {
               <Nav.Link
                 as={Link}
                 to="/"
-                style={{ cursor: "pointer", color: "#364f6b" }}
+                style={{ cursor: "pointer", color: "white" }}
                 onClick={() =>
                   signout(() => {
                     history.push("/");
                   })
                 }
               >
-                <FontAwesomeIcon icon={faSignOutAlt} /> Signout
+                <FontAwesomeIcon icon={faSignOutAlt} />  <span className="navItem"> Signout</span>  
               </Nav.Link>
             </>
           )}
         </Nav>
+        </Navbar.Collapse>
       </Navbar>
 
       <hr />

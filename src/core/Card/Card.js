@@ -15,6 +15,7 @@ const Card = ({
   showRemoveProductButton = false,
   setRun = (f) => f,
   run = undefined,
+  cssClassName=""
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
@@ -90,7 +91,7 @@ const Card = ({
         )}
 
         <br />
-        <ShowImage item={product} url="product" />
+        <ShowImage item={product} url="product" cssClassName={cssClassName} />
           
         
         

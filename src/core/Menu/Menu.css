@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .navbar_nav{
-    background-color: #dee1ec;
+    background-color: #222;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
   }
   
@@ -10,13 +10,13 @@
 .brandName{
     font-size: 32px !important;
     font-family: 'Lobster', cursive;
-    color: #be6a15 !important;
+    color: #ff1f5a !important;
     margin-left: 5%;
 }
 
-.bg{
-    /* background-color: #20232A; */
-    /* color: #20232A; */
+.navItem{
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .nav-link:hover{

@@ -44,14 +44,14 @@ const Product = (props) => {
           {product && product.description && (
             <Col md={8} className="mb-3">
               {" "}
-              <Card product={product} viewProductButton={false} />{" "}
+              <Card product={product} viewProductButton={false} cssClassName="singleProduct" />{" "}
             </Col>
           )}
 
           <Col md={4} className="mb-3">
             <h4>Related Products</h4>
             {relatedProduct.map( (p,  i) => (
-              <Card key={i} product={p} />
+              <Card key={i} product={p}  />
             ))}
           </Col>
         </Row>

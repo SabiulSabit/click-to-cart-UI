@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-.footer{
-    background-color: whitesmoke;
-}
 
 .footerDiv{
     margin-top: 10%;
+    background-color: #222;
 }
 
-.brandName{
+.brandNameFooter{
     font-size: 32px !important;
     font-family: 'Lobster', cursive;
-    color: #3b5441;
+    color: #ff1f5a !important;
     margin-left: 5%;
+    margin-top: 5%;
 }

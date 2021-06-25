@@ -7,14 +7,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../style.css";
 import "./Layout.css";
 
-
-
-
-
 const Layout = ({
   title = "Title",
   description = "Description",
-  src="",
+  src = "",
   children,
   className,
 }) => {
@@ -22,17 +18,18 @@ const Layout = ({
     <div>
       <Menu />
       <Container fluid className="mb-5">
-       <Row>
-         <Col md={6} className="mt-5">
-         <h2 className="layoutH2 text-center">{title}</h2>
-        <p className="descriptionP">{description}</p>
-         </Col>
-         <Col md={6} className="text-center">
-           <img src={src} />
-         </Col>
-    
-       </Row>
-    
+        <Row>
+          {/* <Col md={12}>
+            <img src="/images/home-2-3.jpg" width="100%" height="550px" />
+          </Col> */}
+          <Col md={6} className="mt-5">
+            <h2 className="layoutH2 text-center">{title}</h2>
+            <p className="descriptionP">{description}</p>
+          </Col>
+          <Col md={6} className="text-center">
+            <img src={src} />
+          </Col>
+        </Row>
       </Container>
 
       <div className={className}>{children}</div>

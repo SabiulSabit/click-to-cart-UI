@@ -10,7 +10,7 @@ const Footer = () => {
       <hr />
       <footer className="text-lg-start text-muted footer">
         
-        <h3 className="text-left brandName">Click To Cart</h3>
+        <h3 className="text-left brandNameFooter">Click To Cart</h3>
 
         <section className="">
           <div className="container text-center text-md-start mt-5">
