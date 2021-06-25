@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout";
+import Layout from "./Layout/Layout";
 import { getProducts } from "./apiCore";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "./Card/Card";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../core/Layout";
+import Layout from "../core/Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { getUserInfo, upadetUserInfo, updateLocalStorageUser } from "./apiUser";

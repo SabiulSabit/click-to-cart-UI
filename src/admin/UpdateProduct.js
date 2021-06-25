@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Layout from "../core/Layout";
+import Layout from "../core/Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { getSingleProduct, getCategorys, updateProduct } from "./apiAdmin";

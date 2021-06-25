@@ -1,10 +1,10 @@
 import React from "react";
-import Menu from "./Menu/Menu";
+import Menu from "../Menu/Menu";
 import { Container, Row, Col } from "react-bootstrap";
-import Footer from "./Footer/Footer";
+import Footer from "../Footer/Footer";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../style.css";
+import "../../style.css";
 
 
 

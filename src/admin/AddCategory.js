@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import  {Link} from "react-router-dom"
-import Layout from "../core/Layout";
+import Layout from "../core/Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { createCategory } from "./apiAdmin";

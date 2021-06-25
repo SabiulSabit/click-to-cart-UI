@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../core/Layout";
+import Layout from "../core/Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { isAuthenticate } from "../auth/index";
 import { Link } from "react-router-dom";

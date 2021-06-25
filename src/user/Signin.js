@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Redirect } from "react-router-dom";
-import Layout from "../core/Layout";
+import Layout from "../core/Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { signin, authenticate, isAuthenticate } from "../auth/index";
 
