@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <Layout
-      title="Home"
+      title="Welcome to Click to Cart"
       description="E-Commerce Website"
       className="container-fluid"
     >

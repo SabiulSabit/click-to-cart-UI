@@ -3,8 +3,16 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticate } from "../../auth/index";
 import { itemTotal } from "../cartHelpers";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus, faSignInAlt, faUserPlus, faHome, faStore, faChartLine, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartPlus,
+  faSignInAlt,
+  faUserPlus,
+  faHome,
+  faStore,
+  faChartLine,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Menu.css";
 
 const isActive = (history, path) => {
@@ -19,21 +27,18 @@ const Menu = ({ history }) => {
   return (
     <div>
       <Navbar>
-        <Navbar.Brand as={Link} to="/" className="brandName">Click To Cart</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="brandName">
+          Click To Cart
+        </Navbar.Brand>
         <Nav className="ml-auto">
-          <Nav.Link
-            as={Link}
-            
-            to="/"
-            style={isActive(history, "/")}
-          >
-            <FontAwesomeIcon icon={faHome} /> Home 
+          <Nav.Link as={Link} to="/" style={isActive(history, "/")}>
+            <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
           <Nav.Link as={Link} to="/shop" style={isActive(history, "/shop")}>
-          <FontAwesomeIcon icon={faStore} /> Shop 
+            <FontAwesomeIcon icon={faStore} /> Shop
           </Nav.Link>
           <Nav.Link as={Link} to="/cart" style={isActive(history, "/cart")}>
-          <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup> Cart 
+            <FontAwesomeIcon icon={faCartPlus} /> <sup> {itemTotal()}</sup> Cart
           </Nav.Link>
 
           {isAuthenticate() && isAuthenticate().user.role === 0 && (
@@ -42,7 +47,8 @@ const Menu = ({ history }) => {
               to="/user/dashboard"
               style={isActive(history, "/user/dashboard")}
             >
-              <FontAwesomeIcon icon={faChartLine} />Dashboard 
+              <FontAwesomeIcon icon={faChartLine} />
+              Dashboard
             </Nav.Link>
           )}
 
@@ -63,14 +69,14 @@ const Menu = ({ history }) => {
                 to="/signin"
                 style={isActive(history, "/signin")}
               >
-                <FontAwesomeIcon icon={faSignInAlt} /> Signin  
+                <FontAwesomeIcon icon={faSignInAlt} /> Signin
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to="/signup"
                 style={isActive(history, "/signup")}
               >
-                <FontAwesomeIcon icon={faUserPlus} /> Signup 
+                <FontAwesomeIcon icon={faUserPlus} /> Signup
               </Nav.Link>
             </>
           )}
@@ -87,12 +93,14 @@ const Menu = ({ history }) => {
                   })
                 }
               >
-                <FontAwesomeIcon icon={faSignOutAlt} /> Signout 
+                <FontAwesomeIcon icon={faSignOutAlt} /> Signout
               </Nav.Link>
             </>
           )}
         </Nav>
       </Navbar>
+
+      <hr />
     </div>
   );
 };

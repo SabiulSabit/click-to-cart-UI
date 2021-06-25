@@ -20,7 +20,7 @@ const Layout = ({
       <Menu />
       <Container fluid>
        <Row>
-         <Col md={6} className="text-center">
+         <Col md={6} className="text-center mt-5">
          <h2 className="layoutH2">{title}</h2>
         <p className="lead">{description}</p>
          </Col>
