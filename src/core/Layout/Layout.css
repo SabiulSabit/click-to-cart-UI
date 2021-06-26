@@ -3,7 +3,7 @@
 
 
 .layoutH2{
-    color: #473889;
+    color: #fc5185;
     border: none;
     font-weight: 700;
     font-family: 'Viaoda Libre', cursive;
@@ -17,8 +17,8 @@
 
 
 .descriptionP{
-    padding-left: 30%;
+    /* padding-left: 30%; */
   
     font-weight: 550;
-    color: #5d5d5a;
+    color: white;
 }  

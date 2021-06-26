@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <Layout
       title="Welcome to Click to Cart"
-      description="Click to Cart is a E-Commerce Website, From Where you can buy any daily life product for your-self. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+      description="Click to Cart is a E-Commerce Website, From Where you can buy any daily life product for your-self."
       src="/images/shopping-basket.png"
       className="container-fluid"
     >
