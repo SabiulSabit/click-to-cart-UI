@@ -19,16 +19,16 @@ const Layout = ({
       <Menu />
       <Container fluid className="mb-5">
         <Row>
-          {/* <Col md={12}>
-            <img src="/images/home-2-3.jpg" width="100%" height="550px" />
-          </Col> */}
-          <Col md={6} className="mt-5">
+          <Col md={12}>
+            <img src="/images/banner_01.png" width="100%" height="400px" />
+          </Col>
+          {/* <Col md={6} className="mt-5">
             <h2 className="layoutH2 text-center">{title}</h2>
             <p className="descriptionP">{description}</p>
           </Col>
           <Col md={6} className="text-center">
             <img src={src} />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
 
