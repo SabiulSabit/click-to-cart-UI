@@ -5,10 +5,10 @@ import {
   getBraintreeClientToken,
   processPayment,
   createOrder,
-} from "./apiCore";
-import { emptyCart } from "./cartHelpers";
+} from "../apiCore";
+import { emptyCart } from "../cartHelpers";
 
-import { isAuthenticate } from "../auth/index";
+import { isAuthenticate } from "../../auth/index";
 import DropIn from "braintree-web-drop-in-react";
 
 const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
@@ -57,7 +57,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       </Link>
     );
   };
- 
+
   let delivery = data.address
 
   //confirm pay
@@ -68,7 +68,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     let getNonce = data.instance
       .requestPaymentMethod()
       .then((data) => {
-       // console.log(data);
+        // console.log(data);
         nonce = data.nonce;
 
         const paymentData = {
@@ -86,11 +86,11 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
             };
             createOrder(userId, token, orderData)
               .then((ord) => {
-          
+
                 emptyCart(() => {
                   setRun(!run);
-                  setData({ loading: false,success: true });
-                 // console.log("Cart Empty");
+                  setData({ loading: false, success: true });
+                  // console.log("Cart Empty");
                 });
               })
               .catch((orderErr) => {

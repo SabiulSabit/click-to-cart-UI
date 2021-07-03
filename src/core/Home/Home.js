@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout/Layout";
-import { getProducts } from "./apiCore";
+import Layout from "../Layout/Layout";
+import { getProducts } from "../apiCore";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card/Card";
-import Search from "./Search/Search";
+import Card from "../Card/Card";
+import Search from "../Search/Search";
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([]);

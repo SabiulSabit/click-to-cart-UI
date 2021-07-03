@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { getCart } from '../cartHelpers';
 import CartCard from '../CartCard/CartCard';
-import Checkout from '../Checkout.js';
-
+import Checkout from '../Checkout/Checkout'
 const Cart = () => {
     const [items, setItems] = useState([]);
     const [run, setRun] = useState(false);

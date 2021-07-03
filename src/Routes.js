@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
-import Home from "./core/Home";
+import Home from "./core/Home/Home";
 import Shop from "./core/Shop";
 import UserDashboard from './user/UserDashboard'
 import Profile from './user/Profile'
@@ -14,7 +14,7 @@ import UpdateProduct from './admin/UpdateProduct'
 import Orders from './admin/Orders'
 import ManageProducts from './admin/ManageProducts'
 import AdminDashboard from "./user/AdminDashboard";
-import Product from "./core/Product";
+import Product from "./core/Product/Product";
 import Cart from "./core/Cart/Cart";
 
 

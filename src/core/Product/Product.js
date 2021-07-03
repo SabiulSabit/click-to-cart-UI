@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout/Layout";
-import { getSingleProdcut, getRelatedProduct } from "./apiCore";
+import Layout from "../Layout/Layout";
+import { getSingleProdcut, getRelatedProduct } from "../apiCore";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card/Card";
+import Card from "../Card/Card";
 
 const Product = (props) => {
   const [product, setProduct] = useState({});
@@ -50,8 +50,8 @@ const Product = (props) => {
 
           <Col md={4} className="mb-3">
             <h4>Related Products</h4>
-            {relatedProduct.map( (p,  i) => (
-              <Card key={i} product={p}  />
+            {relatedProduct.map((p, i) => (
+              <Card key={i} product={p} />
             ))}
           </Col>
         </Row>
