@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import ShowImage from "../ShowImage";
+import ShowImage from "../ShowImage/ShowImage";
 import moment from "moment";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faEye, faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { addItem, updateItem, removeItem } from "../cartHelpers";
 import './card.css'
 
@@ -15,7 +15,7 @@ const Card = ({
   showRemoveProductButton = false,
   setRun = (f) => f,
   run = undefined,
-  cssClassName=""
+  cssClassName = ""
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
@@ -77,8 +77,8 @@ const Card = ({
   };
 
   return (
-     
-     <div className="card">
+
+    <div className="card">
       {shouldRedirect(redirect)}
       <div className="card-header cat-name">{product.category && product.category.name}</div>
       <div className="card-body">
@@ -92,19 +92,19 @@ const Card = ({
 
         <br />
         <ShowImage item={product} url="product" cssClassName={cssClassName} />
-          
-        
-        
-        
+
+
+
+
         <p className="p_name">
           {product.name}
         </p>
         <p className="price"> &#2547; {product.price} </p>
         {
-            !viewProductButton &&  (
-              <p className="lead mt-2"> {product.description.substring(0, 500)} </p> 
-            )
-          }
+          !viewProductButton && (
+            <p className="lead mt-2"> {product.description.substring(0, 500)} </p>
+          )
+        }
         <hr />
         <p className="black-8">
           Last Update: {moment(product.createdAt).fromNow()}{" "}
@@ -133,8 +133,8 @@ const Card = ({
 
         {showCartUpdateOptions(cartUpdate)}
       </div>
-    </div> 
-    
+    </div>
+
   );
 };
 
