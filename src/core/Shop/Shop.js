@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout/Layout";
+import Layout from "../Layout/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import Card from "./Card/Card";
-import { getCategorys, getFilteredProducts } from "./apiCore";
-import Checkbox from "./Checkbox";
-import RadioBox from "./RadioBox";
-import { prices } from "./fixedPrice";
+import Card from "../Card/Card";
+import { getCategorys, getFilteredProducts } from "../apiCore";
+import Checkbox from "../Checkbox/Checkbox";
+import RadioBox from "../RadioBox/RadioBox";
+import { prices } from "../fixedPrice";
 
 const Shop = () => {
   const [categories, setCategories] = useState([]);
