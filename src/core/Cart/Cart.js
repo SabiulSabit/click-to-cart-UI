@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { getCart } from '../cartHelpers';
 import CartCard from '../CartCard/CartCard';
-import Checkout from '../Checkout/Checkout'
+import Checkout from '../Checkout/Checkout';
+
+
 const Cart = () => {
+    
+    //state
     const [items, setItems] = useState([]);
     const [run, setRun] = useState(false);
 
@@ -18,7 +22,8 @@ const Cart = () => {
             return currentvalue + nextValue.count * nextValue.price;
         }, 0);
     };
-
+    
+    //show products 
     const showItems = items => {
         return (
             <div>
@@ -39,13 +44,15 @@ const Cart = () => {
             </div>
         );
     };
-
+  
+    //show cart empty msg
     const noItemsMessage = () => (
         <h2 id="darkBlue">
             Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
         </h2>
     );
-
+  
+    //return the layout
     return (
         <Layout
             title="Cart"

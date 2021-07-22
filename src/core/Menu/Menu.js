@@ -13,8 +13,11 @@ import {
   faChartLine,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
+
+//css
 import "./Menu.css";
-//364f6b 
+
+//set active page color code
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
     return { color: "#ff5959" };
@@ -24,6 +27,8 @@ const isActive = (history, path) => {
 };
 
 const Menu = ({ history }) => {
+
+  // all menu item
   return (
     <div  className="navbar_nav">
       <Navbar expand="lg" >

@@ -14,6 +14,8 @@ const Layout = ({
   children,
   className,
 }) => {
+
+  //show the menu and slider
   return (
     <div>
       <Menu />

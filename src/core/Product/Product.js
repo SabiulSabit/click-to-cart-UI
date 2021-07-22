@@ -5,10 +5,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import Card from "../Card/Card";
 
 const Product = (props) => {
+  //state
   const [product, setProduct] = useState({});
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [error, setError] = useState(false);
-
+ 
+  //load product data
   const loadSingleProduct = (prodcutId) => {
     getSingleProdcut(prodcutId).then((data) => {
       if (data.error) {
@@ -27,12 +29,13 @@ const Product = (props) => {
     });
   };
 
+  //on load
   useEffect(() => {
     const productId = props.match.params.productId;
-    //console.log(productId);
     loadSingleProduct(productId);
   }, [props]);
 
+  //returun the layout
   return (
     <Layout
       title={product.name}

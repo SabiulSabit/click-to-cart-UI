@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import Search from "../Search/Search";
 
 const Home = () => {
+  //state
   const [productsBySell, setProductsBySell] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);
   const [error, setError] = useState(false);
@@ -37,6 +38,7 @@ const Home = () => {
     loadProductsBySell();
   }, []);
 
+  //return the layout
   return (
     <Layout
       title="Welcome to Click to Cart"

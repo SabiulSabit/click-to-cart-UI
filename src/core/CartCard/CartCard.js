@@ -13,15 +13,18 @@ const CartCard = ({
   setRun = (f) => f,
   run = undefined,
 }) => {
+  //state
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-
+  
+  //redirect user to cart page
   const shouldRedirect = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart" />;
     }
   };
-
+  
+  //hanel cart product
   const handelChnage = (productId) => (event) => {
     setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
@@ -29,7 +32,8 @@ const CartCard = ({
       updateItem(productId, event.target.value);
     }
   };
-
+  
+  //show cart product update option 
   const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (
@@ -50,7 +54,8 @@ const CartCard = ({
       )
     );
   };
-
+ 
+  //show cart product remove option
   const showRemoveButton = (showRemoveProductButton) => {
     return (
       showRemoveProductButton && (
@@ -67,6 +72,7 @@ const CartCard = ({
     );
   };
 
+  
   return (
     <div className="card">
       {shouldRedirect(redirect)}

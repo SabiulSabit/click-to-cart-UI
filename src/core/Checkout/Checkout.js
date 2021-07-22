@@ -22,10 +22,12 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     loading: false,
     address: "",
   });
-
+  
+  //get auth user info
   const userId = isAuthenticate() && isAuthenticate().user._id;
   const token = isAuthenticate() && isAuthenticate().token;
-
+  
+  //get payment token
   const getToken = (userId, token) => {
     getBraintreeClientToken(userId, token).then((data) => {
       if (data.error) {
@@ -36,11 +38,13 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       }
     });
   };
-
+  
+  //generate token on load
   useEffect(() => {
     getToken(userId, token);
   }, []);
-
+ 
+  //get total price
   const getTotal = () => {
     return products.reduce((currentvalue, nextValue) => {
       return currentvalue + nextValue.count * nextValue.price;
@@ -107,11 +111,12 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
         setData({ ...data, error: error.message });
       });
   };
-
+ 
   const handelAddress = (event) => {
     setData({ ...data, address: event.target.value });
   };
-
+   
+  //show the drop in
   const showDropIn = () => {
     return (
       <div onBlur={() => setData({ ...data, error: "" })}>
@@ -139,6 +144,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
+  //show error msg
   const showError = (error) => {
     return (
       <div
@@ -149,7 +155,8 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
       </div>
     );
   };
-
+ 
+  //show success msg
   const showSucess = (success) => {
     return (
       <div
@@ -161,6 +168,7 @@ const Checkout = ({ products, setRun = (f) => f, run = undefined }) => {
     );
   };
 
+  //show loading msg
   const showLoading = (loading) => {
     return loading && <h2>Loading ...</h2>;
   };

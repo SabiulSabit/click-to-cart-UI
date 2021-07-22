@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "../ShowImage/ShowImage";
 import moment from "moment";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { addItem, updateItem, removeItem } from "../cartHelpers";
-import './card.css'
+
+//css
+import "./card.css";
 
 const Card = ({
   product,
@@ -15,23 +17,26 @@ const Card = ({
   showRemoveProductButton = false,
   setRun = (f) => f,
   run = undefined,
-  cssClassName = ""
+  cssClassName = "",
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-
+   
+  //product add to cart
   const addToCart = () => {
     addItem(product, () => {
       setRedirect(true);
     });
   };
 
+  //redirect to cart page
   const shouldRedirect = (redirect) => {
     if (redirect) {
       return <Redirect to="/cart" />;
     }
   };
-
+  
+  //update prodcut qnt
   const handelChnage = (productId) => (event) => {
     setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
@@ -39,7 +44,8 @@ const Card = ({
       updateItem(productId, event.target.value);
     }
   };
-
+   
+  //show cart update options
   const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (
@@ -59,7 +65,8 @@ const Card = ({
       )
     );
   };
-
+ 
+  //show remove item option for product
   const showRemoveButton = (showRemoveProductButton) => {
     return (
       showRemoveProductButton && (
@@ -75,12 +82,13 @@ const Card = ({
       )
     );
   };
-
+ 
   return (
-
     <div className="card">
       {shouldRedirect(redirect)}
-      <div className="card-header cat-name">{product.category && product.category.name}</div>
+      <div className="card-header cat-name">
+        {product.category && product.category.name}
+      </div>
       <div className="card-body">
         {product.quantity > 0 ? (
           <span className="badge badge-success badge-pill float-right">
@@ -93,24 +101,15 @@ const Card = ({
         <br />
         <ShowImage item={product} url="product" cssClassName={cssClassName} />
 
-
-
-
-        <p className="p_name">
-          {product.name}
-        </p>
+        <p className="p_name">{product.name}</p>
         <p className="price"> &#2547; {product.price} </p>
-        {
-          !viewProductButton && (
-            <p className="lead mt-2"> {product.description.substring(0, 500)} </p>
-          )
-        }
+        {!viewProductButton && (
+          <p className="lead mt-2"> {product.description.substring(0, 500)} </p>
+        )}
         <hr />
         <p className="black-8">
           Last Update: {moment(product.createdAt).fromNow()}{" "}
         </p>
-
-
 
         {showAddToCartButton && (
           <button
@@ -134,7 +133,6 @@ const Card = ({
         {showCartUpdateOptions(cartUpdate)}
       </div>
     </div>
-
   );
 };
 
