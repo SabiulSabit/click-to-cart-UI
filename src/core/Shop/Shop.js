@@ -66,7 +66,7 @@ const Shop = () => {
       size > 0 &&
       size >= limit && (
         <button onClick={loadMore} className="btn btn-warning mb-5 ">
-          Lode More
+          Load More
         </button>
       )
     );

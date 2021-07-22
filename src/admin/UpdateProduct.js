@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 
 const UpdateProdcut = ({match}) => {
   const form = useRef(null);
+  //state
   let [category, setCategory] = useState([]);
   let [values, setValues] = useState({
     loading: false,
@@ -23,11 +24,12 @@ const UpdateProdcut = ({match}) => {
     setValue,
     formState: { errors },
   } = useForm();
-
+ 
+  //get user data and token
   const { user, token } = isAuthenticate();
   const { loading, error, createProductName, redirectToProfile } = values;
 
-  
+  //intilization
   const init = (productId) =>{
       getSingleProduct(productId).then(data => {
           if(data.error){
@@ -56,14 +58,13 @@ const UpdateProdcut = ({match}) => {
     });
   }, []);
 
- // console.log(createProductName);
+ // form submit
   const onSubmit = (data) => {
-    //console.log(data);
-    const data1 = new FormData(form.current);
-    //formData.set(data);
 
+    const data1 = new FormData(form.current);
     setValues({ ...values, error: "", loading: true });
 
+    //api call
     updateProduct(match.params.productId,user._id, token, data1)
       .then((data) => {
         if (data.error) {
@@ -89,7 +90,8 @@ const UpdateProdcut = ({match}) => {
         console.log(err);
       });
   };
-
+ 
+  //form
   const newPostForm = () => {
     return (
       <form ref={form} className="mb-3" onSubmit={handleSubmit(onSubmit)}>
@@ -213,6 +215,7 @@ const UpdateProdcut = ({match}) => {
     );
   };
 
+  // show error msg
   const showError = () => (
     <div
       className="alert alert-danger"
@@ -221,18 +224,20 @@ const UpdateProdcut = ({match}) => {
       {error}
     </div>
   );
-
+ 
+  //show success msg
   const showSuccess = () => (
     <div className="alert alert-info" style={{ display: createProductName ? "" : "none" }}>
        <h3> {`${createProductName} is Updated !`} </h3>
     </div>
   );
-
+  
+  //show loading msg
   const showLoading = () => (
      loading &&  ( <div className="alert alert-sucess"><h2>Loading</h2></div> )
   );
 
-
+  //redirect user to home page
   const redirectUser = () =>{
       if(redirectToProfile){
           if(!error){
@@ -241,7 +246,7 @@ const UpdateProdcut = ({match}) => {
       }
   }
 
-
+  // return layout
   return (
     <Layout title="Update Product" description="E-Commerce Website">
       <Container>

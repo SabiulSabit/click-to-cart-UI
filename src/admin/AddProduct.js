@@ -7,6 +7,7 @@ import { createProduct, getCategorys } from "./apiAdmin";
 
 const AddProdcut = () => {
   const form = useRef(null);
+  //state
   let [category, setCategory] = useState([]);
   let [values, setValues] = useState({
     loading: false,
@@ -22,7 +23,8 @@ const AddProdcut = () => {
     setValue,
     formState: { errors },
   } = useForm();
-
+  
+  //get auth user data and token
   const { user, token } = isAuthenticate();
   const { loading, error, createProductName } = values;
 
@@ -37,14 +39,16 @@ const AddProdcut = () => {
     });
   }, []);
 
- // console.log(createProductName);
+
+   //handle form submit
   const onSubmit = (data) => {
-    //console.log(data);
+
     const data1 = new FormData(form.current);
     //formData.set(data);
 
     setValues({ ...values, error: "", loading: true });
 
+    //api call
     createProduct(user._id, token, data1)
       .then((data) => {
         if (data.error) {
@@ -69,7 +73,8 @@ const AddProdcut = () => {
         console.log(err);
       });
   };
-
+  
+  //form for product add
   const newPostForm = () => {
     return (
       <form ref={form} className="mb-3" onSubmit={handleSubmit(onSubmit)}>
@@ -192,7 +197,8 @@ const AddProdcut = () => {
       </form>
     );
   };
-
+  
+  //show error msg
   const showError = () => (
     <div
       className="alert alert-danger"
@@ -201,18 +207,21 @@ const AddProdcut = () => {
       {error}
     </div>
   );
-
+ 
+  //show success msg
   const showSuccess = () => (
     <div className="alert alert-info" style={{ display: createProductName ? "" : "none" }}>
        <h3> {`${createProductName} is Created !`} </h3>
     </div>
   );
-
+  
+  //show loadgin msg
   const showLoading = () => (
      loading &&  ( <div className="alert alert-sucess"><h2>Loading</h2></div> )
   );
 
-
+ 
+  //return layout
   return (
     <Layout title="Add New Product" description="E-Commerce Website" src="/images/product.png">
       <Container>

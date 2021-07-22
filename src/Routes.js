@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+//get all components
 import Signup from "./user/Signup";
 import Signin from "./user/Signin";
 import Home from "./core/Home/Home";
@@ -21,7 +23,7 @@ import Cart from "./core/Cart/Cart";
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Switch> dashboard
+      <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/shop" exact component={Shop} />
         <Route path="/signin" exact component={Signin} />

@@ -6,9 +6,11 @@ import { getOrderList, getStatusValues, updateOrderStatus } from "./apiAdmin";
 import moment from "moment";
 
 const Orders = () => {
+   //state
   const [orders, setOrders] = useState([]);
   const [statusValues, setStatusValues] = useState([]);
 
+    //get user data and token
   const { user, token } = isAuthenticate();
 
   const loadOrders = () => {

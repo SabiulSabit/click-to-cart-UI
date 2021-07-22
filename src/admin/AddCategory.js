@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBackward } from '@fortawesome/free-solid-svg-icons'
 
 const AddCategory = () => {
+  //state
   let [error, setError] = useState(0);
   let [success, setSuccess] = useState(0);
 
@@ -19,7 +20,7 @@ const AddCategory = () => {
     formState: { errors },
   } = useForm();
 
-  //token
+  //get user data and token
   const { user, token } = isAuthenticate();
 
   let onSubmit = (data) => {

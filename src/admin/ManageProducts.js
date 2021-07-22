@@ -8,9 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const ManageProducts = () => {
+  //state
   const [products, setProducts] = useState([]);
-  const { user, token } = isAuthenticate();
 
+  //get user data and token
+  const { user, token } = isAuthenticate();
+  
+  //get product info
   const loadProduct = () => {
     getProducts().then((data) => {
       if (data.error) {
@@ -20,7 +24,8 @@ const ManageProducts = () => {
       }
     });
   };
-
+ 
+  //delete a product
   const removeProduct = (prodcutId) => {
     deleteProduct(prodcutId, user._id, token).then((data) => {
       if (data.error) {
@@ -30,11 +35,13 @@ const ManageProducts = () => {
       }
     });
   };
-
+   
+  //load product info
   useEffect(() => {
     loadProduct();
   }, []);
-
+  
+  //return the layout
   return (
     <Layout
       title="Manage Products"
