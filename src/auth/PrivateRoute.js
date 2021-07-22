@@ -1,8 +1,8 @@
 import React  from "react";
 import { Route, Redirect } from "react-router-dom";
 import { isAuthenticate } from "./index";
-import UserDashboard from "../user/UserDashboard";
 
+//normal user and admin can use this routing
 function PrivateRoute({component,path,children, ...rest }) {
   if (isAuthenticate()) {
     return <Route path={path} exact component={component} />;
