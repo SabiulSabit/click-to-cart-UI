@@ -8,15 +8,18 @@ import { getOrderHistory } from './apiUser'
 
 const Dashboard = () => {
 
+  //state
   const [history, setHistory] = useState([]);
 
+  //get auth user data
   const {
     user: { _id, name, email, role },
   } = isAuthenticate();
 
+  //get auth user token
   const { token } = isAuthenticate();
 
-
+  //get user order history
   const init = (userId, token) => {
     getOrderHistory(userId, token).then(data => {
       if (data.error) {
@@ -27,12 +30,13 @@ const Dashboard = () => {
     })
   }
 
+  //load
   useEffect(() => {
     init(_id, token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
+  //normal user accesable link
   const userLinks = () => {
     return (
       <div className="card bg-dark text-light">
@@ -53,7 +57,8 @@ const Dashboard = () => {
       </div>
     );
   };
-
+  
+  //show user basic info
   const userInfo = () => {
     return (
       <div className="card dashBoardCard mb-5">
@@ -69,6 +74,7 @@ const Dashboard = () => {
     );
   };
 
+  //show user purchase history
   const purchaseHistory = history => {
     return (
       <div className="card dashBoardCard mb-5">
@@ -101,6 +107,7 @@ const Dashboard = () => {
     );
   };
 
+  //return layout
   return (
     <Layout title="User Dashboard" description="User Dashboard">
       <Container>

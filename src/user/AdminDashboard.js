@@ -5,10 +5,13 @@ import { isAuthenticate } from "../auth/index";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
+
+  //get auth user data
   const {
     user: { name, email, role },
   } = isAuthenticate();
 
+  //admin accessable link
   const adminLinks = () => {
     return (
       <div className="card">
@@ -39,6 +42,7 @@ const AdminDashboard = () => {
     );
   };
 
+  //admin info
   const adminInfo = () => {
     return (
       <div className="card dashBoardCard mb-5">
@@ -54,6 +58,7 @@ const AdminDashboard = () => {
     );
   };
 
+  //return layout
   return (
     <Layout title="Admin Dashboard" description="Admin Dashboard" src="/images/dashBoard.png">
       <Container>

@@ -7,6 +7,7 @@ import  {signup} from '../auth/index'
 
 
 const Signup = () => {
+  //state
   let [error, setError] = useState(0);
   let [success, setSuccess] = useState(0);
 
@@ -18,6 +19,7 @@ const Signup = () => {
   } = useForm();
 
 
+  //form on submit
   let onSubmit = (data) => {
     const { name, email, password } = data;
     signup({ name, email, password }).then((data) => {
@@ -35,6 +37,7 @@ const Signup = () => {
     });
   };
 
+  //sign up form
   const singUPForm = () => (
     <Container className="center">
       <Row>
@@ -93,7 +96,8 @@ const Signup = () => {
       </Row>
     </Container>
   );
-
+ 
+  //show error msg
   const showError = () => {
     console.log(error);
     return (
@@ -106,6 +110,7 @@ const Signup = () => {
     );
   };
 
+  //show success msg
   const showSuccess = () => {
     return (
       <div
@@ -117,6 +122,7 @@ const Signup = () => {
     );
   };
 
+  //retun the layout
   return (
     <Layout title="Signup" description="E-Commerce Website">
       {showSuccess()}

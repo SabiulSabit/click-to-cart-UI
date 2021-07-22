@@ -6,10 +6,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { signin, authenticate, isAuthenticate } from "../auth/index";
 
 const Signin = () => {
+  //state
   let [error, setError] = useState(0);
   let [loading, setLoading] = useState(false);
   let [redirect, setRedirect] = useState(false);
 
+  //get auth user data
   const {user} = isAuthenticate();
 
   const {
@@ -19,6 +21,7 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
 
+  //form on submit
   let onSubmit = (data) => {
     const { email, password } = data;
     setLoading(true);
@@ -39,7 +42,8 @@ const Signin = () => {
     });
   };
 
-  const singUPForm = () => (
+  //sign in form
+  const singInForm = () => (
     <Container className="center">
       <Row>
         <Col md={8} className="offset-md-2">
@@ -81,6 +85,7 @@ const Signin = () => {
     </Container>
   );
 
+  //show error msg
   const showError = () => {
     console.log(error);
     return (
@@ -93,6 +98,7 @@ const Signin = () => {
     );
   };
 
+  //show loading msg
   const showLoading = () => {
     return (
       loading && (
@@ -103,6 +109,7 @@ const Signin = () => {
     );
   };
 
+  //show redirect msg
   const redirectUser = () => {
     if (redirect) {
        if(user && user.role === 1){
@@ -119,12 +126,13 @@ const Signin = () => {
     }
   };
 
+  //return the layout
   return (
     <Layout title="Signin" description="E-Commerce Website">
       {showLoading()}
       {redirectUser()}
       {showError()}
-      {singUPForm()}
+      {singInForm()}
     </Layout>
   );
 };

@@ -6,6 +6,7 @@ import { getUserInfo, upadetUserInfo, updateLocalStorageUser } from "./apiUser";
 import { Redirect } from "react-router-dom";
 
 const Profile = (props) => {
+  //state
   const [values, setValues] = useState({
     name: "",
     password: "",
@@ -14,8 +15,11 @@ const Profile = (props) => {
   });
 
   const { name, password, error, success } = values;
-  const { token } = isAuthenticate();
 
+  //get auth user token
+  const { token } = isAuthenticate();
+ 
+  //get user info
   const init = (userId) => {
     getUserInfo(userId, token).then((data) => {
       if (data.error) {
@@ -26,14 +30,17 @@ const Profile = (props) => {
     });
   };
 
+  //load
   useEffect(() => {
     init(props.match.params.userId);
   }, []);
-
+ 
+  //handel change
   const handelChnage = name => e => {
   setValues({...values, error: false, [name]: e.target.value})
   };
 
+  //on submit
   const clickSubmit = (e) => {
       e.preventDefault();
       upadetUserInfo(props.match.params.userId, token,  {name, password} ).then(data =>{
@@ -47,12 +54,14 @@ const Profile = (props) => {
       } )
   };
 
+  //redirect user to dashboard
   const redirectUser = (success) => {
       if(success) {
           return <Redirect to="/user/dashboard" />
       }
   }
 
+  //profile update component
   const profileUpdate = (name, password) => {
     return (
       <Container>
@@ -89,6 +98,7 @@ const Profile = (props) => {
     );
   };
 
+  //return layout
   return (
     <Layout title="Update Profile" description="E-Commerce Website">
     
